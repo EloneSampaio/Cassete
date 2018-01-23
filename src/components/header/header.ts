@@ -1,4 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
+import { NavController } from 'ionic-angular';
 //import { Content } from 'ionic-angular';
 
 @Component({
@@ -16,7 +17,7 @@ export class HeaderComponent {
 	filtereditems:any;
 	searchTerm: string = '';
 
-  constructor() {
+  constructor(private _navCtrl: NavController) {
     this.items = [
       {title: 'one'},
       {title: 'two'},
@@ -39,6 +40,10 @@ export class HeaderComponent {
 			return item.title.toLowerCase().indexOf(this.searchTerm.toLowerCase()) > -1;
 		});    
 
-	}
+  }
+  
+  levaNaHome(){
+    this._navCtrl.setRoot('HomePage');
+  }
 
 }

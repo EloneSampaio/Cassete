@@ -57,7 +57,7 @@ export class LetraNewPage {
 
       this.alertCtrl.create({
         title: 'Alerta',
-        message: 'Letra enviada com sucesso! estará disponivel no site em breve.',
+        message: 'Letra enviada com sucesso! estará disponivel em breve.',
         buttons: [
           {
             text: 'OK',

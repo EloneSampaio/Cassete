@@ -38,8 +38,6 @@ export class SolicitacaoEditPage {
    data: Date.now(),
    video: "",
    img: 'assets/imgs/padrao.png'
-
-
  };
 
  constructor(public navCtrl: NavController, public navParams: NavParams, public letraService: LetraService) { }

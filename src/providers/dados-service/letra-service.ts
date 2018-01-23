@@ -34,26 +34,24 @@ export class LetraService {
   }
 
    add(data){
-          this.afs.collection('letras').add(data)
-           .then(item=>{
-             //this.solicitacaoService.remove(data.id);
-
-                  this.solicitacaoService.remove(data.id);
-                  console.log("removido:"+data.id);
-
-           }).catch(error=>{
-                     console.error(error);
-           });
+    this.afs.collection('letras').add(data)
+     .then(item => {
+       //this.solicitacaoService.remove(data.id);
+        this.solicitacaoService.remove(item.id);
+        console.log("removido:"+item.id);
+     })
+     .catch(error => {
+        console.error(error);
+     });
   }
 
-   remove(id){
-            this.afs.doc('letras/'+id).delete().then(result=>{
-                   console.log("removido");
-            }).catch(error=>{
-              console.error(error);
-            })
-
-   }
+  remove(id){
+    this.afs.doc('letras/'+id).delete().then(result=>{
+           console.log("removido");
+    }).catch(error=>{
+      console.error(error);
+    })
+  }
 
    getBy(id){
     return this.afs.collection<LetraI>('letras/'+id).valueChanges();

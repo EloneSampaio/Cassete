@@ -57,6 +57,7 @@ export const firebaseConfig = {
       //locationStrategy: 'path'
     },{
       links: [
+        { component: HomePage, name: 'HomePage', segment: '' },
         { component: LetraPage, name: 'LetraPage', segment: ':cantor/:titulo' },
         { component: LetraNewPage, name: 'LetraNewPage', segment: 'enviar-letra' },
         { component: SolicitacaoEditPage, name: 'SolicitacaoEditPage', segment: 'editar-letra' },
