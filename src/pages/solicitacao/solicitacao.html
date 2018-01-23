@@ -1,0 +1,25 @@
+<ion-content> 
+  <ion-row>
+    <ion-col col-sm-6 col-md-3 *ngFor="let dado of dados">
+
+        <ion-card>
+          <ion-card-header>
+            <ion-item>
+              <h2 class="cabecalho">{{dado.cantor}}</h2>
+              <p>{{dado.titulo}}</p>
+              <p>{{dado.data | date}}</p>
+            </ion-item>
+          </ion-card-header>
+          
+          <ion-card-content>
+            <p class="texto">{{dado.letra}}</p>
+            <button ion-button icon-left clear small (click)="verItem(dado)">
+              <ion-icon name="create"></ion-icon>
+              Editar
+            </button>
+          </ion-card-content>
+        </ion-card>
+    </ion-col>
+  </ion-row>
+
+</ion-content> 

@@ -1,0 +1,55 @@
+<ion-header>
+ <header> </header>
+
+ <ion-toolbar color="primary">
+   <ion-searchbar [(ngModel)]="searchTerm"
+                 placeholder="Procurar por cantor ou titulo"
+                 (ionInput)="filterItems($event)">
+   </ion-searchbar>
+ </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+ <ion-grid ion-fixed no-padding>
+   <ion-list  style="position: absolute;z-index:1;width:100%; border: 1px solid #000000">
+     <ion-item *ngFor=" let item of itensFiltrados" (click)="verItem(item)" color="silver" >
+       <h2>{{item.cantor}}</h2>
+       <p>{{item.titulo}}</p>
+     </ion-item>
+   </ion-list>
+ </ion-grid>
+
+ <ion-grid>
+   <ion-row>
+     <ion-col  text-center>
+       <h3>Bem-vindo ao grandacassete.com!</h3>
+         <p class="card-subtitle"> grandaCassete é o lugar onde a sua procura por
+             letras de musicas angolana terminam!</p>
+         <div class="hr"> </div>
+     </ion-col>
+   </ion-row>
+
+ <h4>Recomendado para si!</h4>
+
+   <ion-row wrap>
+     <ion-col col-6 col-sm-6 col-md-3 text-center *ngFor="let dado of dados">
+       <div (click)="verItem(dado)">
+         <img width="130px" height="130px" src="{{ dado.img}}">
+         <h6>{{ dado.cantor |capitalizeHtml}}</h6>
+         <p>{{ dado.titulo | capitalizeHtml}}</p>
+       </div>
+     </ion-col>
+   </ion-row>
+
+   <div class="hr"> </div>
+
+   <ion-row class="opcoes">
+     <div ion-col text-center (click)="abrirPagina()">Enviar letra</div>
+     <div ion-col text-center (click)="abrirSolicitacao()">Ver Solicitacao</div>
+     <!-- <div ion-col text-center>Solicitar letra </div> -->
+   </ion-row>
+ </ion-grid>
+
+ <footer> </footer>
+</ion-content>

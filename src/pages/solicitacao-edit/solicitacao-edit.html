@@ -1,0 +1,25 @@
+<ion-header>
+ <header> </header>
+</ion-header>
+
+<ion-content>
+   <ion-card>
+
+       <ion-card-content padding>
+         <form (ngSubmit)='save()'>
+
+           <ion-item>
+               <ion-label stacked>Letra</ion-label>
+               <ion-textarea placeholder="Escreva a letra aqui..."   [froalaEditor]
+               [(froalaModel)]="data.letra"></ion-textarea>
+           </ion-item>
+
+           <button ion-button type="submit" color="padrao" outline block>
+             Enviar
+           </button>
+
+         </form>
+       </ion-card-content>
+   </ion-card>
+ <footer> </footer>
+</ion-content>

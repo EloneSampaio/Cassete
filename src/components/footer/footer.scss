@@ -1,0 +1,26 @@
+footer {
+    .rodape{
+        padding: 1rem;
+        background-color: #efefef;
+        text-align: center;
+
+        .btn-wrapper {
+            margin-bottom: 20px;
+        }
+
+        .assinatura{
+            font-size: 12px;
+            bottom: 0;
+            width: 100%;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .aviso{
+            color: #1C1C1C !important;
+            font-size: 12px;
+            line-height: 1.8;
+        }
+
+    }
+}

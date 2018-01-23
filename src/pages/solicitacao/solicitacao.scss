@@ -1,0 +1,9 @@
+page-solicitacao {     
+  .texto {
+      max-width: 50ch;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    
+}

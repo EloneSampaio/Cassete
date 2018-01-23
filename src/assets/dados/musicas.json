@@ -1,0 +1,84 @@
+{
+	"autor" : "Eugenio Rosario",
+    "descricao":"Lista de musicas",
+	"musicas" : [
+            {   
+                "userId":1,
+                "cantor":"G-Easy", 
+                "titulo":"Think about you", 
+                "img":"assets/imgs/artistas/geasy.jpg",
+                "letra":"Got this flight to London, I ain't pop no Xans for it In case you was wonderin', I ain't even plan for it I just left L.A, barely caught the plane Fuckin' TSA, swear a nigga ran for it Ain't used to this fame shit This you-all-know-my-name-shit Me, I'm just the same kid That fucked around and made it Fucked over my main chick Damn she was the main chick Thinkin' 'bout the game I shouldn't have played, but I played it",
+                "traducao": null,
+                "youtubeVideo":"https://www.youtube.com/watch?v=gE1Gbwn-LU0"
+            },
+            { 
+                "userId":2,
+                "cantor":"Rick Ross", 
+                "titulo":"Trap trap trap", 
+                "img":"assets/imgs/artistas/rickross.jpeg",
+                "letra":"I'm sittin' at the red light My ankle monitor beepin' Hadn't been charged I think I see the people BounceTrap, trap, trap, trap, trap, trap I took my roof off at the red light I took my roof off at the red light Trap, trap, trap, trap, trap, trap Trap, trap, trap, trap, trap, trap Brown bag legend 'cause it's all cash Brown bag legend when it's all cash Trap, trap, trap, trap, trap, trap Trap, trap, trap, trap, trap, trap",
+                "traducao": null,
+                "youtubeVideo":"https://www.youtube.com/watch?v=MJYcQaAlLFQ"
+            },
+            { 
+                "userId":3,
+                "cantor":"Anselmo Ralph", 
+                "titulo":"Não me toca", 
+                "img":"assets/imgs/artistas/Anselmo-Ralph.jpg"
+            },
+            { 
+                "userId":4,
+                "cantor":"Forca Suprema", 
+                "titulo":"Da Ex", 
+                "img":"assets/imgs/artistas/Forca-Suprema.jpg"
+            },
+            { 
+                "userId":5,
+                "cantor":"NGA", 
+                "titulo":"Normal", 
+                "img":"assets/imgs/artistas/NGA.jpg"
+            },
+            { 
+                "userId":6,
+                "cantor":"Yola Semedo", 
+                "titulo":"Injusta", 
+                "img":"assets/imgs/artistas/yolasemedo.jpg"
+            },
+            { 
+                "userId":7,
+                "cantor":"Yuri da Cunha", 
+                "titulo":"Gago", 
+                "img":"assets/imgs/artistas/Yuri.jpg"
+            },
+            { 
+                "userId":8,
+                "cantor":"Perola", 
+                "titulo":"Doida", 
+                "img":"assets/imgs/artistas/perola.jpg"
+            },
+            { 
+                "userId":9,
+                "cantor":"Nagrelha", 
+                "titulo":"Mamadi", 
+                "img":"assets/imgs/artistas/nagrelha.jpg"
+            },
+            { 
+                "userId":10,
+                "cantor":"Preto Show", 
+                "titulo":"Vou matar la um", 
+                "img":"assets/imgs/artistas/Preto Show.jpg"
+            },
+            { 
+                "userId":11,
+                "cantor":"Eva Rap Diva", 
+                "titulo":"Final Feliz", 
+                "img":"assets/imgs/artistas/eva.jpeg"
+            },
+            { 
+                "userId":12,
+                "cantor":"Telma Lee", 
+                "titulo":"Tatuagem", 
+                "img":"assets/imgs/artistas/Telma.jpg"
+            }		
+	]
+}

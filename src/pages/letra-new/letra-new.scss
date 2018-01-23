@@ -1,0 +1,22 @@
+page-letra-new {
+    ion-input {
+        border-bottom: 1px solid map-get($colors, padrao);
+    }
+    .mensagem{
+        font-size: 12px;
+        color: #f53d3d;
+        text-align: center
+    }
+
+    @media screen and (min-width: 768px) {
+        .teste{
+            width: 50%;
+            margin: auto;
+            //position: absolute;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background-color:#EEE !important;
+            margin-bottom: 20px;
+            margin-top: 20px;
+        }
+    }
+}
