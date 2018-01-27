@@ -19,10 +19,19 @@ export class SolicitacaoService {
    }
 
 
-   getAll(){
-     this.letras=this.letraCollection.valueChanges();
-     return this.letras;
-   }
+    getAll(){
+        this.letras=this.letraCollection.snapshotChanges().map(actions => {
+
+            return actions.map(action => {
+                const data = action.payload.doc.data() as SolicitacaoI;
+                const id = action.payload.doc.id;
+                return { id, ...data };
+
+            })
+
+        });
+        return this.letras;
+    }
 
    add(data){
            this.afs.collection('solicitacoes').add(data)

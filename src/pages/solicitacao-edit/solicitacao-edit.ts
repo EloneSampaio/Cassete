@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { LetraService } from '../../providers/dados-service/letra-service';
 
+import {KeepHtmlPipe} from "../../pipes/keep-html";
+
 
 /**
 * Generated class for the SolicitacaoEditPage page.
@@ -47,7 +49,9 @@ export class SolicitacaoEditPage {
    this.data.cantor = this.navParams.get('cantor');
    this.data.titulo = this.navParams.get('titulo');
    //this.imagem = this.navParams.get('imagem');
-   this.data.letra = this.navParams.get('letra');
+      var linhas = this.navParams.get('letra');
+   this.data.letra = linhas;
+
  }
 
  save(){
@@ -56,4 +60,10 @@ export class SolicitacaoEditPage {
    this.letraService.add(this.data);
 
  }
+
+
+    public options: Object = {
+        placeholderText: 'Edit Your Content Here!',
+        charCounterCount: false
+    }
 }

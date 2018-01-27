@@ -29,7 +29,7 @@
 
           <ion-item>
             <ion-label stacked>Cantor/Grupo*:</ion-label>
-            <ion-input name="cantor" type="text" value="" [(ngModel)]="data.cantor" required></ion-input>
+            <ion-input name="cantor" type="text" value="" [(ngModel)]="data.cantor" (ngModelChange)="data.cantor = $event.toLocaleLowerCase()" required></ion-input>
           </ion-item>
           
           <div *ngIf="monstrarMensagem" class="mensagem">
@@ -38,7 +38,7 @@
 
           <ion-item>
             <ion-label stacked>Título da musica*:</ion-label>
-            <ion-input name="titulo" type="text" value="" [(ngModel)]="data.titulo" required></ion-input>
+            <ion-input name="titulo" type="text" value="" [(ngModel)]="data.titulo" (ngModelChange)="data.titulo = $event.toLocaleLowerCase()" required></ion-input>
           </ion-item>
           
           <div *ngIf="monstrarMensagem" class="mensagem">
@@ -57,10 +57,11 @@
           
           <ion-item>
                 <ion-label stacked>Letra*:</ion-label>
-                <ion-textarea placeholder="Escreva a letra aqui..." 
+                <ion-textarea placeholder="Escreva a letra aqui..."
                 style="width:100%; padding: 10px; margin-top: 3px;"
-                cols="30" rows="20" name="letra" [(ngModel)]="data.letra" required></ion-textarea>
-          </ion-item> 
+                cols="30" rows="20" name="letra" [froalaEditor]
+                              [(froalaModel)]="data.letra" required></ion-textarea>
+          </ion-item>
           
           <div *ngIf="monstrarMensagem" class="mensagem">
               <span>Campo obrigatório</span>

@@ -22,6 +22,7 @@ import { SolicitacaoService } from '../../providers/dados-service/solicitacao-se
 export class LetraNewPage {
 
   data = {
+
   nome: "",
   email: "",
   cantor: "",

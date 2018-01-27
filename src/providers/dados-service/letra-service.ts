@@ -36,9 +36,9 @@ export class LetraService {
    add(data){
     this.afs.collection('letras').add(data)
      .then(item => {
-       //this.solicitacaoService.remove(data.id);
-        this.solicitacaoService.remove(item.id);
-        console.log("removido:"+item.id);
+       this.solicitacaoService.remove(data.id);
+        //this.solicitacaoService.remove(item.id);
+        console.log("removido:"+data.id);
      })
      .catch(error => {
         console.error(error);
