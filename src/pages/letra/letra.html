@@ -12,17 +12,16 @@
 <ion-content>
   <ion-grid ion-fixed no-padding>
     <ion-list  style="position: absolute;z-index:1;width:100%; border: 1px solid #000000">
-      <ion-item *ngFor=" let item of itensFiltrados" color="silver" >
-        <h2>{{item.cantor}}</h2>
-        <p>{{item.title}}</p>
+      <ion-item *ngFor=" let item of itensFiltrados" (click)="verItem(item)" color="silver" >
+        <h2>{{item.cantor |capitalizeHtml}}</h2>
+        <p>{{item.titulo |capitalizeHtml}}</p>
       </ion-item>
     </ion-list>
   </ion-grid>
-  
 <div class="wrapper" *ngFor="let dado of dados">
   <ion-item>
-    <h1 class="nomeArtista">{{dado.cantor}}</h1>
-    <p>{{dado.titulo}}</p>
+    <h1 class="nomeArtista">{{dado.cantor |capitalizeHtml}}</h1>
+    <p>{{dado.titulo |capitalizeHtml}}</p>
   </ion-item>
 
 <!-- Opcao de traducao caso for necessario

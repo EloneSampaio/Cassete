@@ -3,6 +3,9 @@ import { IonicPage,
          NavController,
          NavParams } from 'ionic-angular';
 import { LetraService } from '../../providers/dados-service/letra-service';
+import {DadosServiceProvider} from "../../providers/dados-service/dados-service";
+import {Observable} from "rxjs/Rx";
+import {Subject} from "rxjs/Subject";
 
 @IonicPage({
   name: 'LetraPage',
@@ -20,6 +23,7 @@ export class LetraPage {
   imagem: string;
   letra: string;
 
+<<<<<<< HEAD
   // items: any;
 	// itensFiltrados: any;
   // searchTerm: string = '';
@@ -28,6 +32,46 @@ export class LetraPage {
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
               public letraService: LetraService) { }
+=======
+  items: any;
+	itensFiltrados: any;
+    searchTerm: string = '';
+    startAt = new Subject();
+    endAt = new Subject();
+
+    startobs = this.startAt.asObservable();
+    endobs = this.endAt.asObservable();
+  dados: any = [];
+  
+  constructor(public navCtrl: NavController, public navParams: NavParams,public ddProvider: DadosServiceProvider,
+              public letraService: LetraService) {
+
+      this.itensFiltrados = [];
+
+      Observable.combineLatest(this.startobs, this.endobs).subscribe((value) => {
+          letraService.search(value[0], value[1]).subscribe((letras) => {
+              console.log(letras);
+              this.itensFiltrados = letras;
+          });
+      })
+  }
+
+
+    filterItems(searchbar) {
+        console.log("item filtrado: " + this.searchTerm);
+
+        //const q = this.searchTerm;
+        const q = searchbar.target.value;
+        //Nao filtrar a array caso o valor for vazio
+        if (q.trim() == '') {
+            return this.itensFiltrados = null;
+        } else {
+            this.startAt.next(q);
+            this.endAt.next(q + "\uf8ff");
+
+        }
+    }
+>>>>>>> 695b02ab351ed7566b4f6d715135f6e0275ec083
 
   ionViewDidLoad() {
     const cantor = this.navParams.get('cantor');
@@ -42,5 +86,15 @@ export class LetraPage {
      this.titulo = this.dados.titulo;
      this.letra=this.dados.letra;
   }
+
+
+    verItem(dado){
+        this.navCtrl.setRoot("LetraPage",{
+            cantor: dado.cantor,
+            titulo: dado.titulo,
+            imagem: dado,
+            letra: dado
+        });
+    }
 
 }
