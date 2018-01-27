@@ -1,31 +1,19 @@
 <ion-header>
  <header> </header>
-
- <ion-toolbar color="primary">
-   <ion-searchbar [(ngModel)]="searchTerm"
-                 placeholder="Procurar por cantor ou titulo"
-                 (ionInput)="filterItems($event)">
-   </ion-searchbar>
- </ion-toolbar>
-
+ <resultado-search> </resultado-search>
 </ion-header>
 
 <ion-content>
- <ion-grid ion-fixed no-padding>
-   <ion-list  style="position: absolute;z-index:1;width:100%; border: 1px solid #000000">
-     <ion-item *ngFor=" let item of itensFiltrados" (click)="verItem(item)" color="silver" >
-       <h2>{{item.cantor}}</h2>
-       <p>{{item.titulo}}</p>
-     </ion-item>
-   </ion-list>
- </ion-grid>
+
+  
 
  <ion-grid>
    <ion-row>
      <ion-col  text-center>
        <h3>Bem-vindo ao grandacassete.com!</h3>
-         <p class="card-subtitle"> grandaCassete é o lugar onde a sua procura por
-             letras de musicas angolana terminam!</p>
+         <p class="card-subtitle">O lugar onde a sua procura por
+             letras de musicas Africanas terminam!
+          </p>
          <div class="hr"> </div>
      </ion-col>
    </ion-row>

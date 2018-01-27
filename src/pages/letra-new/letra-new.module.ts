@@ -5,7 +5,7 @@ import { ComponentsModule } from '../../components/components.module'
 
 @NgModule({
   declarations: [
-    LetraNewPage,
+    //LetraNewPage,
   ],
   imports: [
     IonicPageModule.forChild(LetraNewPage),

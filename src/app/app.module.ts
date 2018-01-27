@@ -5,10 +5,7 @@ import { HttpModule } from '@angular/http';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { Deeplinks } from '@ionic-native/deeplinks';
 
-// Import Froala Editor.
 import "froala-editor/js/froala_editor.pkgd.min.js";
-
-// Import Angular2 plugin.
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 
 import { MyApp } from './app.component';
@@ -53,6 +50,7 @@ export const firebaseConfig = {
     HttpModule,
     ComponentsModule,
     IonicModule.forRoot(MyApp,{
+      mode: 'md' // 'md' | 'ios' | 'wp' //md em todas plataformas
       //preloadModules: true,
       //locationStrategy: 'path'
     },{
@@ -69,8 +67,6 @@ export const firebaseConfig = {
     PipesModule,
     FroalaEditorModule.forRoot(), 
     FroalaViewModule.forRoot()
-  
-    
   ],
   bootstrap: [IonicApp],
   entryComponents: [

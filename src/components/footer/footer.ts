@@ -26,11 +26,17 @@ export class FooterComponent {
     );
   }
 
-  paginaTwitter(){
+  paginaInsta(){
     this.inAppBrowser.create(
-      `https://twitter.com`,
+      `https://instagram.com/mr_dorosario`,
       '_blank'
     );
   }
+  // paginaTwitter(){
+  //   this.inAppBrowser.create(
+  //     `https://twitter.com`,
+  //     '_blank'
+  //   );
+  // }
 
 }

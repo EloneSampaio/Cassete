@@ -1,9 +1,22 @@
 header {
-    .caixaItems{
-        z-index: 1;
-        top: 20px;
-    }
     .logo{
-        cursor: pointer;
+        text-align: center;
+    }
+    .logo img{
+        cursor: pointer; 
+        top: 5px;
+        left: 10px;
+        position: relative
+    }
+    .searchbar-input {
+        float: right;
+        position: relative;
+        top: 0px;
+    }
+
+    #resultado{
+        background-color: #ffffff;
+        border: 1px solid #000000;
+        z-index: 10px;
     }
 }

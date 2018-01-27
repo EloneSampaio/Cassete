@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { DadosServiceProvider } from '../../providers/dados-service/dados-service';
 import { LetraService } from '../../providers/dados-service/letra-service';
-import { LetraI } from '../../models/letra/letra.interface';
+//import { LetraI } from '../../models/letra/letra.interface';
 //import { LetraNewPage } from '../letra-new/letra-new';
 import { Observable } from 'rxjs/Rx';
 
