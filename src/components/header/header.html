@@ -10,9 +10,6 @@
           placeholder="Procurar cantor ou titulo"
           (ionInput)="filterItems($event)">
       </ion-searchbar>
-
-      
-
     </ion-list>
     
     <ion-buttons end>
@@ -23,4 +20,11 @@
 
 </ion-navbar>
 
+<ion-list class="lista" style="border-left: 1px solid #000000;
+  border-right: 1px solid #000000;border-bottom: 1px solid #000000;">
+  <ion-item *ngFor=" let item of itensFiltrados" (click)="verItem(item)" color="silver" >
+        <h2>{{item.cantor}}</h2>
+        <p>{{item.titulo}}</p>
+      </ion-item>
+  </ion-list>  
   

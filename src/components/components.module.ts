@@ -2,13 +2,10 @@ import { NgModule } from '@angular/core';
 import { HeaderComponent } from './header/header';
 import { FooterComponent } from './footer/footer';
 import { IonicModule } from 'ionic-angular';
-import { ResultadoSearchComponent } from './resultado-search/resultado-search';
 
 @NgModule({
-	declarations: [ HeaderComponent, FooterComponent,
-    ResultadoSearchComponent ],
+	declarations: [ HeaderComponent, FooterComponent ],
 	imports: [IonicModule],
-	exports: [ HeaderComponent, FooterComponent,
-    ResultadoSearchComponent ]
+	exports: [ HeaderComponent, FooterComponent]
 })
 export class ComponentsModule {}

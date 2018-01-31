@@ -1,41 +1,26 @@
 <ion-header>
   <header> </header>
-
-  <ion-toolbar color="primary">	
-    <ion-searchbar [(ngModel)]="searchTerm" 
-                  placeholder="Procurar por cantor ou titulo" 
-                  (ionInput)="filterItems($event)">
-    </ion-searchbar>
-  </ion-toolbar>
 </ion-header>
   
 <ion-content>
-  <ion-grid ion-fixed no-padding>
-    <ion-list  style="position: absolute;z-index:1;width:100%; border: 1px solid #000000">
-      <ion-item *ngFor=" let item of itensFiltrados" (click)="verItem(item)" color="silver" >
-        <h2>{{item.cantor |capitalizeHtml}}</h2>
-        <p>{{item.titulo |capitalizeHtml}}</p>
-      </ion-item>
-    </ion-list>
-  </ion-grid>
-<div class="wrapper" *ngFor="let dado of dados">
-  <ion-item>
-    <h1 class="nomeArtista">{{dado.cantor |capitalizeHtml}}</h1>
-    <p>{{dado.titulo |capitalizeHtml}}</p>
-  </ion-item>
-
-<!-- Opcao de traducao caso for necessario
-  <ion-grid>
-    <ion-row class="opcoesLetra">
-      <p class="OpAtual">Letra</p>
-      <p class="OpAtual">Tradução</p>
-    </ion-row>
-  </ion-grid>
--->
-  <div [innerHTML]="dado.letra | keepHtml" class="letra">
-
+  <div class="wrapper" *ngFor="let dado of dados">
+    <ion-item>
+      <h1 class="nomeArtista">{{dado.cantor |capitalizeHtml}}</h1>
+      <p>{{dado.titulo |capitalizeHtml}}</p>
+    </ion-item>
+  
+  <!-- Opcao de traducao caso for necessario
+    <ion-grid>
+      <ion-row class="opcoesLetra">
+        <p class="OpAtual">Letra</p>
+        <p class="OpAtual">Tradução</p>
+      </ion-row>
+    </ion-grid>
+  -->
+    <div [innerHTML]="dado.letra | keepHtml" class="letra">
+    
+    </div>
   </div>
-</div>
 
   <!-- <div class="btn-wrapper" style="text-align: center; margin-top: 20px">   
     <button color="padrao" outline icon-left ion-button>

@@ -9,7 +9,6 @@ import "froala-editor/js/froala_editor.pkgd.min.js";
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 
 import { MyApp } from './app.component';
-import { DadosServiceProvider } from '../providers/dados-service/dados-service';
 
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireModule } from 'angularfire2';
@@ -79,7 +78,6 @@ export const firebaseConfig = {
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    DadosServiceProvider,
     LetraService,
     SolicitacaoService,
     InAppBrowser,

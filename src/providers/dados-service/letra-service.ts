@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import { LetraI } from '../../models/letra/letra.interface';
@@ -13,27 +12,26 @@ export class LetraService {
   letras: Observable<LetraI[]>;
   
   
-  constructor(private afs: AngularFirestore, private solicitacaoService: SolicitacaoService) {
+  constructor(private afs: AngularFirestore, 
+              private solicitacaoService: SolicitacaoService) {
 
     this.letraCollection=afs.collection<LetraI>('letras',ref=> ref.orderBy('data'));
    }
 
 
   getAll(){
-    this.letras=this.letraCollection.snapshotChanges().map(actions => {
+    this.letras=this.letraCollection.snapshotChanges().map( actions => {
 
      return actions.map(action => {
        const data = action.payload.doc.data() as LetraI;
        const id = action.payload.doc.id;
        return { id, ...data };
-
      })
-
     })
     return this.letras;
   }
 
-   add(data){
+  add(data){
     this.afs.collection('letras').add(data)
      .then(item => {
        this.solicitacaoService.remove(data.id);
@@ -72,16 +70,13 @@ export class LetraService {
       });
     }
   
-search(start: any, end: any){
+  search(start: any, end: any){
 
-     return this.afs.collection('letras', ref => ref.limit(4).orderBy('titulo')
-     .startAt(start)
-     .endAt(end))
-     .valueChanges();
+    return this.afs.collection('letras', ref => ref.limit(4).orderBy('titulo')
+    .startAt(start)
+    .endAt(end))
+    .valueChanges();
 
- }
+  }
  
-
-
-
 }
