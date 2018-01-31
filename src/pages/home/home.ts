@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { LetraService } from '../../providers/dados-service/letra-service';
+import { LetraPage } from '../letra/letra';
 //import { Observable } from 'rxjs/Rx';
 
 @Component({
@@ -27,5 +28,13 @@ export class HomePage {
  abrirSolicitacao() {
    this.navCtrl.setRoot("SolicitacaoPage");
  }
+
+ verItem(dado){
+  this.navCtrl.push(LetraPage,{
+    cantor: dado.cantor,
+    titulo: dado.titulo,
+    letra: dado.letra
+  });
+}
 
 }

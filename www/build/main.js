@@ -417,10 +417,10 @@ HeaderComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["n" /* Component */])({
         selector: 'header',template:/*ion-inline-start:"/home/rosario/Desktop/Ionic 3/grandaCassete/src/components/header/header.html"*/'<ion-navbar color="padrao">\n    \n    <div class="logo" *ngIf="mostarLogo">\n        <img src="../../assets/imgs/logoPage.png" (click)="levaNaHome()" width="60" height="40">\n    </div>  \n\n    <ion-list *ngIf="showSearchbar">\n\n      <ion-searchbar [(ngModel)]="searchTerm"\n          placeholder="Procurar cantor ou titulo"\n          (ionInput)="filterItems($event)">\n      </ion-searchbar>\n    </ion-list>\n    \n    <ion-buttons end>\n        <button ion-button icon-only (click)="toggleSearchbar()" color="branco">\n            <ion-icon ios="ios-search" md="md-search"> </ion-icon>\n        </button>\n    </ion-buttons>\n\n</ion-navbar>\n\n<ion-list class="lista" style="border-left: 1px solid #000000;\n  border-right: 1px solid #000000;border-bottom: 1px solid #000000;">\n  <ion-item *ngFor=" let item of itensFiltrados" (click)="verItem(item)" color="silver" >\n        <h2>{{item.cantor}}</h2>\n        <p>{{item.titulo}}</p>\n      </ion-item>\n  </ion-list>  \n  '/*ion-inline-end:"/home/rosario/Desktop/Ionic 3/grandaCassete/src/components/header/header.html"*/
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["e" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["e" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__providers_dados_service_letra_service__["a" /* LetraService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_dados_service_letra_service__["a" /* LetraService */]) === "function" && _b || Object])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["e" /* NavController */],
+        __WEBPACK_IMPORTED_MODULE_3__providers_dados_service_letra_service__["a" /* LetraService */]])
 ], HeaderComponent);
 
-var _a, _b;
 //# sourceMappingURL=header.js.map
 
 /***/ }),
@@ -513,10 +513,10 @@ var LetraService = (function () {
 }());
 LetraService = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_angularfire2_firestore__["a" /* AngularFirestore */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_angularfire2_firestore__["a" /* AngularFirestore */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__dados_service_solicitacao_service__["a" /* SolicitacaoService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__dados_service_solicitacao_service__["a" /* SolicitacaoService */]) === "function" && _b || Object])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_angularfire2_firestore__["a" /* AngularFirestore */],
+        __WEBPACK_IMPORTED_MODULE_2__dados_service_solicitacao_service__["a" /* SolicitacaoService */]])
 ], LetraService);
 
-var _a, _b;
 //# sourceMappingURL=letra-service.js.map
 
 /***/ }),
@@ -984,6 +984,7 @@ SolicitacaoEditPage = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(40);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_dados_service_letra_service__ = __webpack_require__(69);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__letra_letra__ = __webpack_require__(706);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -993,6 +994,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -1013,16 +1015,23 @@ var HomePage = (function () {
     HomePage.prototype.abrirSolicitacao = function () {
         this.navCtrl.setRoot("SolicitacaoPage");
     };
+    HomePage.prototype.verItem = function (dado) {
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_3__letra_letra__["a" /* LetraPage */], {
+            cantor: dado.cantor,
+            titulo: dado.titulo,
+            letra: dado.letra
+        });
+    };
     return HomePage;
 }());
 HomePage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'page-home',template:/*ion-inline-start:"/home/rosario/Desktop/Ionic 3/grandaCassete/src/pages/home/home.html"*/'<ion-header>\n <header> </header>\n</ion-header>\n\n<!-- <resultado-search> \n</resultado-search> -->\n\n<ion-content>\n <ion-grid>\n   <ion-row>\n     <ion-col  text-center>\n       <h3>Bem-vindo ao Granda Cassete!</h3>\n         <p class="card-subtitle">O lugar onde a sua procura por\n             letras de musicas Africanas terminam!\n          </p>\n         <div class="hr"> </div>\n     </ion-col>\n   </ion-row>\n\n <h4>Recomendado para si!</h4>\n\n   <ion-row wrap>\n     <ion-col col-6 col-sm-6 col-md-3 text-center *ngFor="let dado of dados">\n       <div (click)="verItem(dado)">\n         <img width="130px" height="130px" src="{{ dado.img}}">\n         <h6>{{ dado.cantor |capitalizeHtml}}</h6>\n         <p>{{ dado.titulo | capitalizeHtml}}</p>\n       </div>\n     </ion-col>\n   </ion-row>\n\n   <div class="hr"> </div>\n\n   <ion-row class="opcoes">\n     <div ion-col text-center (click)="abrirPagina()">Enviar letra</div>\n     <!-- <div ion-col text-center (click)="abrirSolicitacao()">Ver Solicitacao</div> -->\n     <!-- <div ion-col text-center>Solicitar letra </div> -->\n   </ion-row>\n </ion-grid>\n\n <footer> </footer>\n</ion-content>\n'/*ion-inline-end:"/home/rosario/Desktop/Ionic 3/grandaCassete/src/pages/home/home.html"*/
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */],
-        __WEBPACK_IMPORTED_MODULE_2__providers_dados_service_letra_service__["a" /* LetraService */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__providers_dados_service_letra_service__["a" /* LetraService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_dados_service_letra_service__["a" /* LetraService */]) === "function" && _b || Object])
 ], HomePage);
 
+var _a, _b;
 //# sourceMappingURL=home.js.map
 
 /***/ })
