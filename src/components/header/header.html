@@ -4,25 +4,25 @@
         <img src="../../assets/imgs/logoPage.png" (click)="levaNaHome()" width="60" height="40">
     </div>  
 
-    <ion-list *ngIf="showSearchbar">
+    <ion-list class="listSearch" *ngIf="showSearchbar">
 
       <ion-searchbar [(ngModel)]="searchTerm"
-          placeholder="Procurar cantor ou titulo"
+          placeholder="Procurar titulos ou cantores"
           (ionInput)="filterItems($event)">
       </ion-searchbar>
 
     </ion-list>
     
-    <ion-buttons end>
+    <ion-buttons class="btnSearch" end>
         <button ion-button icon-only (click)="toggleSearchbar()" color="branco">
-            <ion-icon ios="ios-search" md="md-search"> </ion-icon>
+            <ion-icon name="search"> </ion-icon>
         </button>
     </ion-buttons>
 
 </ion-navbar>
 
-<ion-list class="lista">
-  <ion-item class="items" no-lines *ngFor=" let item of itensFiltrados" (click)="verItem(item)">
+<ion-list class="lista" >
+  <ion-item class="items" no-lines *ngFor=" let item of itensFiltrados" color="gray" (click)="verItem(item)">
     <h2>{{item.cantor}}</h2>
     <p>{{item.titulo}}</p>
   </ion-item>

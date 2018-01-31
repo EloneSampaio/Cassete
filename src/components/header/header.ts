@@ -83,8 +83,7 @@ export class HeaderComponent {
     this._navCtrl.setRoot("LetraPage",{
       cantor: dado.cantor,
       titulo: dado.titulo,
-      imagem: dado,
-      letra: dado
+      letra: dado.letra
     });
   }
 
