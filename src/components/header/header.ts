@@ -51,8 +51,8 @@ export class HeaderComponent {
 
     console.log("item filtrado: " + this.searchTerm);
     
-    //const q = this.searchTerm;
-    const q = searchbar.target.value;
+    const q = this.searchTerm;
+    //const q = searchbar.target.value;
 
     //Nao filtrar a array caso o valor for vazio
     if(q.trim() == '') {

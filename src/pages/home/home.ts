@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { LetraService } from '../../providers/dados-service/letra-service';
-import { LetraPage } from '../letra/letra';
+//import { LetraPage } from '../letra/letra';
 //import { Observable } from 'rxjs/Rx';
 
 @Component({
@@ -30,7 +30,7 @@ export class HomePage {
  }
 
  verItem(dado){
-  this.navCtrl.push(LetraPage,{
+  this.navCtrl.setRoot("LetraPage",{
     cantor: dado.cantor,
     titulo: dado.titulo,
     letra: dado.letra
