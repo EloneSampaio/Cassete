@@ -1,26 +1,9 @@
 header {
     .logo{
-        text-align: center;
-    }
-    @media screen and (min-width: 768px) {
-        .logo{
-            text-align: left;
-            margin-left:1em 
-        }
-        .btnSearch{
-            display: none
-        }
-        .listSearch ion-searchbar {
-            width: 50%;
-            margin: auto
-        }
-        .lista .items{
-            width: 50%;
-            margin: auto
-        }
-        .lista{
-            //border: 1px solid #000000 !important;
-        }
+        position: absolute;
+        left: 0.5em;
+        top: 5px;
+        display: inline-block;
     }
     .logo img{
         cursor: pointer; 
@@ -32,6 +15,20 @@ header {
         float: right;
         position: relative;
         top: 0px;
+    }
+    @media screen and (min-width: 768px) {
+        .btnSearch {
+            display: none
+        }
+        
+        ion-searchbar {
+            width: 50%;
+            margin: 0 auto
+        }
+        .lista .items {
+            width: 50%;
+            margin: auto
+        } 
     }
 
     #resultado{

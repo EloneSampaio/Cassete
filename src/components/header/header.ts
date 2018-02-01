@@ -41,6 +41,15 @@ export class HeaderComponent {
 
   }
 
+  ngOnInit() { 
+    if (window.matchMedia("(min-width: 768px)").matches) {
+      this.showSearchbar = true;
+    } 
+    // else{
+    //   this.showSearchbar = false;
+    // }
+  }
+
   toggleSearchbar() {
     this.showSearchbar = !this.showSearchbar;
     this.mostarLogo = !this.mostarLogo;
