@@ -18,10 +18,20 @@ page-letra {
         }
     }
 
-    @media screen and (min-width: 768px) {
-        .teste{
-            
-        }
+    .wrapper .letra{
+        margin-left: 15px; 
     }
-    
+
+    @media screen and (min-width: 768px) {
+        .wrapper{
+            position: relative;
+            top: 2em;
+            width: 60%;
+            margin: 0 auto;
+        }
+        .wrapper .letra{
+            margin-left: 15px; 
+            margin-bottom: 5em;
+        }
+    }    
 }

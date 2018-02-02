@@ -4,9 +4,14 @@
   
 <ion-content>
   <div class="wrapper" *ngFor="let dado of dados">
-    <ion-item>
+    <ion-item >
       <h1 class="nomeArtista">{{dado.cantor |capitalizeHtml}}</h1>
       <p>{{dado.titulo |capitalizeHtml}}</p>
+
+      <!-- <ion-icon item-end color="whatsapp" name="logo-whatsapp"></ion-icon>  
+      <ion-icon item-end color="facebook" name="logo-facebook"></ion-icon>
+      -->
+      <p item-end (click)="partilhar()">Partilhar</p>
     </ion-item>
   
   <!-- Opcao de traducao caso for necessario
@@ -17,7 +22,7 @@
       </ion-row>
     </ion-grid>
   -->
-    <div [innerHTML]="dado.letra | keepHtml" class="letra">
+    <div class="letra" [innerHTML]="dado.letra | keepHtml">
     
     </div>
   </div>

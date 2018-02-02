@@ -33,6 +33,23 @@ export class LetraPage {
               public navParams: NavParams,
               public letraService: LetraService) { }
 
+  
+  partilhar(){
+    //WEB SHARE API FUNCIONA APENAS APARTIR DA VERSAO 61 DO CHROME PARA ANDROID
+    if(navigator.share){
+      navigator.share({
+        'title': 'grandacassete.com',
+        'text': 'Anselmo Ralph - Me deixa ire',
+        'url': 'https://grandacassete-4ffe1.firebaseapp.com/index.html#/anselmo/me%20deixa%20ir'
+      }).then(function() {
+        console.log('Partilhado com sucesso');
+      }).catch(function(error) {
+        console.log('erro ao partilhar:', error)
+      });
+    }
+
+  }
+
   ionViewDidLoad() {
     const cantor = this.navParams.get('cantor');
     const titulo = this.navParams.get('titulo');
