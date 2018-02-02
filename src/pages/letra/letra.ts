@@ -35,9 +35,10 @@ export class LetraPage {
 
   
   partilhar(){
+    let navegador = (window.navigator as any)
     //WEB SHARE API FUNCIONA APENAS APARTIR DA VERSAO 61 DO CHROME PARA ANDROID
-    if(navigator.share){
-      navigator.share({
+    if(navegador.share){
+      navegador.share({
         'title': 'grandacassete.com',
         'text': 'Anselmo Ralph - Me deixa ire',
         'url': 'https://grandacassete-4ffe1.firebaseapp.com/index.html#/anselmo/me%20deixa%20ir'
