@@ -30,3 +30,10 @@ body{
 .list-md {
     margin: 0px 0px 0px !important;
 }
+
+.selectable {
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+  }
