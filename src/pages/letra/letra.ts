@@ -3,8 +3,7 @@ import { IonicPage,
          NavController,
          NavParams } from 'ionic-angular';
 import { LetraService } from '../../providers/dados-service/letra-service';
-//import { Observable } from "rxjs/Rx";
-//import { Subject } from "rxjs/Subject";
+import { SocialSharing } from '@ionic-native/social-sharing';
 
 @IonicPage({
   name: 'LetraPage',
@@ -24,6 +23,13 @@ export class LetraPage {
   imagem: string;
   letra: string;
 
+  btnPartilhar: boolean;
+  btnFacebook:  boolean;
+  btnTwitter:   boolean;
+  btnWhatsapp:  boolean;
+
+  url: any = document.location.href;
+
   // items: any;
 	// itensFiltrados: any;
   // searchTerm: string = '';
@@ -31,17 +37,21 @@ export class LetraPage {
   
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
-              public letraService: LetraService) { }
+              public letraService: LetraService,
+              private socialSharing: SocialSharing) { }
 
   
   partilhar(){
-    let navegador = (window.navigator as any)
+    const cantor = this.navParams.get('cantor');
+    const titulo = this.navParams.get('titulo');
+
+    const navegador = (window.navigator as any)
     //WEB SHARE API FUNCIONA APENAS APARTIR DA VERSAO 61 DO CHROME PARA ANDROID
     if(navegador.share){
       navegador.share({
-        'title': 'grandacassete.com',
-        'text': 'Anselmo Ralph - Me deixa ire',
-        'url': 'https://grandacassete-4ffe1.firebaseapp.com/index.html#/anselmo/me%20deixa%20ir'
+        'title': 'Granda Cassete',
+        'text': `${cantor} - ${titulo}`,
+        'url': this.url
       }).then(function() {
         console.log('Partilhado com sucesso');
       }).catch(function(error) {
@@ -52,6 +62,22 @@ export class LetraPage {
   }
 
   ionViewDidLoad() {
+    let navegador = (window.navigator as any);
+
+    if (navegador.share) {
+      this.btnPartilhar = true;
+    }
+    else{
+      this.btnPartilhar = false;
+      //mostrar botao partilhar com whatsapp apenas quando a tela for menor que 768px
+      if (!window.matchMedia("(min-width: 768px)").matches) {
+        this.btnWhatsapp = true;
+      } 
+      
+      this.btnFacebook = true;
+      this.btnTwitter = true;
+    }
+
     const cantor = this.navParams.get('cantor');
     const titulo = this.navParams.get('titulo');
     //this.imagem = this.navParams.get('imagem').img;
@@ -65,13 +91,19 @@ export class LetraPage {
      this.letra=this.dados.letra;
   }
 
+  Partilharwhatsapp(){
+    const cantor = this.navParams.get('cantor');
+    const titulo = this.navParams.get('titulo');
 
-    verItem(dado){
-        this.navCtrl.setRoot("LetraPage",{
-            cantor: dado.cantor,
-            titulo: dado.titulo,
-            letra: dado.letra
-        });
-    }
+    this.socialSharing.shareViaWhatsApp(`${cantor} - ${titulo}`, null, this.url);
+  }
+
+  verItem(dado){
+      this.navCtrl.setRoot("LetraPage",{
+          cantor: dado.cantor,
+          titulo: dado.titulo,
+          letra: dado.letra
+      });
+  }
 
 }

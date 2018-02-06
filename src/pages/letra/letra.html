@@ -5,31 +5,32 @@
 <ion-content>
   <div class="wrapper selectable" *ngFor="let dado of dados">
     <ion-item >
-      <h1 class="nomeArtista">{{dado.titulo |capitalizeHtml}}</h1>
+      <h4 style="font-weight:bold">{{dado.titulo |capitalizeHtml}}</h4>
       <p>{{dado.cantor |capitalizeHtml}}</p>
 
       <!-- FUNCIONARA APENAS APARTIR DA VERSAO 61 DO CHROME 
         SUPORTE PRA OUTRAS PLATAFORMAS CHEGAAO EM BREVE -->
-      <button item-end (click)="partilhar()"color="padrao" outline icon-left ion-button>
+      <button *ngIf="btnPartilhar" item-end (click)="partilhar()"color="padrao" outline icon-left ion-button>
         <ion-icon name="share"></ion-icon>
         Partilhar
       </button>
-      <!--
+      
       <div item-end class="btn-wrapper">
 
-        <button color="whatsapp" ion-button (click)="paginaTwitter()">
+        <button *ngIf="btnWhatsapp" color="whatsapp" ion-button (click)="Partilharwhatsapp()">
           <ion-icon name="logo-whatsapp"></ion-icon>
         </button> 
 
-        <button color="facebook" ion-button (click)="paginaFacebook()">
+        <button *ngIf="btnFacebook" color="facebook" ion-button>
           <ion-icon name="logo-facebook"></ion-icon>
         </button>    
     
-        <button color="twitter" ion-button (click)="paginaTwitter()">
+        <button *ngIf="btnTwitter" color="twitter" ion-button>
           <ion-icon name="logo-twitter"></ion-icon>
-        </button> 
+        </button>
+
       </div>
-      -->
+      
 
     </ion-item>
   
