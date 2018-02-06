@@ -8,14 +8,13 @@
       <h1 class="nomeArtista">{{dado.titulo |capitalizeHtml}}</h1>
       <p>{{dado.cantor |capitalizeHtml}}</p>
 
-      <!-- <ion-icon item-end color="whatsapp" name="logo-whatsapp"></ion-icon>  
-      <ion-icon item-end color="facebook" name="logo-facebook"></ion-icon>
-      -->
+      <!-- FUNCIONARA APENAS APARTIR DA VERSAO 61 DO CHROME 
+        SUPORTE PRA OUTRAS PLATAFORMAS CHEGAAO EM BREVE -->
       <button item-end (click)="partilhar()"color="padrao" outline icon-left ion-button>
         <ion-icon name="share"></ion-icon>
         Partilhar
       </button>
-
+      <!--
       <div item-end class="btn-wrapper">
 
         <button color="whatsapp" ion-button (click)="paginaTwitter()">
@@ -29,8 +28,8 @@
         <button color="twitter" ion-button (click)="paginaTwitter()">
           <ion-icon name="logo-twitter"></ion-icon>
         </button> 
-
       </div>
+      -->
 
     </ion-item>
   
