@@ -107,6 +107,12 @@ export class LetraPage {
       return false;
   }
 
+  PartilharTwitter(){
+    window.open(
+      'http://www.twitter.com/share?url='+encodeURIComponent(location.href),  
+    ) 
+  }
+
   verItem(dado){
       this.navCtrl.setRoot("LetraPage",{
           cantor: dado.cantor,
