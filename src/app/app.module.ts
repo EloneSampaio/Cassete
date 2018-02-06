@@ -4,6 +4,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { HttpModule } from '@angular/http';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { Deeplinks } from '@ionic-native/deeplinks';
+import { SocialSharing } from '@ionic-native/social-sharing';
 
 import "froala-editor/js/froala_editor.pkgd.min.js";
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
@@ -81,7 +82,8 @@ export const firebaseConfig = {
     LetraService,
     SolicitacaoService,
     InAppBrowser,
-    Deeplinks
+    Deeplinks,
+    SocialSharing
   ]
 })
 export class AppModule {}

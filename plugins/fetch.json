@@ -10,5 +10,13 @@
       "DEEPLINK_SCHEME": "https",
       "DEEPLINK_HOST": "grandacassete.com"
     }
+  },
+  "cordova-plugin-x-socialsharing": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-x-socialsharing"
+    },
+    "is_top_level": true,
+    "variables": {}
   }
 }

@@ -86,4 +86,5 @@
         <variable name="DEEPLINK_SCHEME" value="https" />
         <variable name="DEEPLINK_HOST" value="grandacassete.com" />
     </plugin>
+    <plugin name="cordova-plugin-x-socialsharing" spec="^5.2.1" />
 </widget>
