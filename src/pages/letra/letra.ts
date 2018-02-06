@@ -3,7 +3,7 @@ import { IonicPage,
          NavController,
          NavParams } from 'ionic-angular';
 import { LetraService } from '../../providers/dados-service/letra-service';
-import { SocialSharing } from '@ionic-native/social-sharing';
+//import { SocialSharing } from '@ionic-native/social-sharing';
 
 @IonicPage({
   name: 'LetraPage',
@@ -37,8 +37,7 @@ export class LetraPage {
   
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
-              public letraService: LetraService,
-              private socialSharing: SocialSharing) { }
+              public letraService: LetraService) { }
 
   
   partilhar(){
@@ -69,8 +68,8 @@ export class LetraPage {
     }
     else{
       this.btnPartilhar = false;
-      //mostrar botao partilhar com whatsapp apenas quando a tela for menor que 768px
-      if (!window.matchMedia("(min-width: 768px)").matches) {
+      //mostrar botao partilhar com whatsapp apenas nos dispositivos android ou Iphone
+      if (navigator.userAgent.match(/iPhone|Android/i)) {
         this.btnWhatsapp = true;
       } 
       
@@ -92,10 +91,20 @@ export class LetraPage {
   }
 
   Partilharwhatsapp(){
+    const url = document.location.href;
     const cantor = this.navParams.get('cantor');
     const titulo = this.navParams.get('titulo');
 
-    this.socialSharing.shareViaWhatsApp(`${cantor} - ${titulo}`, null, this.url);
+    document.location.href = `whatsapp://send?text=${cantor} - ${titulo} ${url}`
+  }
+
+  PartilharFacebook(){
+    window.open(
+      'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href), 
+      'facebook-share-dialog', 
+      'width=626,height=436'
+    ); 
+      return false;
   }
 
   verItem(dado){
