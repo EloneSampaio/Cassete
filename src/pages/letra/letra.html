@@ -11,7 +11,27 @@
       <!-- <ion-icon item-end color="whatsapp" name="logo-whatsapp"></ion-icon>  
       <ion-icon item-end color="facebook" name="logo-facebook"></ion-icon>
       -->
-      <p item-end (click)="partilhar()">Partilhar</p>
+      <button item-end (click)="partilhar()"color="padrao" outline icon-left ion-button>
+        <ion-icon name="share"></ion-icon>
+        Partilhar
+      </button>
+
+      <div item-end class="btn-wrapper">
+
+        <button color="whatsapp" ion-button (click)="paginaTwitter()">
+          <ion-icon name="logo-whatsapp"></ion-icon>
+        </button> 
+
+        <button color="facebook" ion-button (click)="paginaFacebook()">
+          <ion-icon name="logo-facebook"></ion-icon>
+        </button>    
+    
+        <button color="twitter" ion-button (click)="paginaTwitter()">
+          <ion-icon name="logo-twitter"></ion-icon>
+        </button> 
+
+      </div>
+
     </ion-item>
   
   <!-- Opcao de traducao caso for necessario
