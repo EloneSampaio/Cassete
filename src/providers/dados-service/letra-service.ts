@@ -15,7 +15,7 @@ export class LetraService {
   constructor(private afs: AngularFirestore, 
               private solicitacaoService: SolicitacaoService) {
 
-    this.letraCollection=afs.collection<LetraI>('letras',ref=> ref.orderBy('data'));
+    this.letraCollection=afs.collection<LetraI>('letras',ref=> ref.orderBy('data').limit(12));
    }
 
 
