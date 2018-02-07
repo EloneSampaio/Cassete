@@ -9,13 +9,15 @@ import { SolicitacaoService } from '../dados-service/solicitacao-service';
 export class LetraService {
 
   letraCollection:AngularFirestoreCollection<LetraI>;
+  letraCollectionSearch:AngularFirestoreCollection<LetraI>;
   letras: Observable<LetraI[]>;
   
   
   constructor(private afs: AngularFirestore, 
               private solicitacaoService: SolicitacaoService) {
 
-    this.letraCollection=afs.collection<LetraI>('letras',ref=> ref.orderBy('data').limit(12));
+    this.letraCollection=afs.collection<LetraI>('letras',ref=> ref.limit(12));
+    this.letraCollectionSearch=afs.collection<LetraI>('letras',ref=> ref.limit(5000));
    }
 
 
@@ -77,6 +79,21 @@ export class LetraService {
     .endAt(end))
     .valueChanges();
 
+  }
+
+
+
+  searchAll(){
+
+    this.letras=this.letraCollectionSearch.snapshotChanges().map( actions => {
+      
+           return actions.map(action => {
+             const data = action.payload.doc.data() as LetraI;
+             const id = action.payload.doc.id;
+             return { id, ...data };
+           })
+          })
+          return this.letras;
   }
  
 }

@@ -40,6 +40,14 @@ export class LetraNewPage {
               private alertCtrl: AlertController) {
   }
 
+   insert_br(text)
+  {
+    var normalized_Enters = text.replace(/\r|\n/g, "\r\n");
+    var text_with_br = normalized_Enters.replace(/\r\n/g, "<br />");
+    return text_with_br;
+  
+  }
+
 
   ionViewDidLoad() {
     
@@ -52,7 +60,12 @@ export class LetraNewPage {
       console.log('letra nao enviada');
     }
     else{
-      this.data.letra.replace(" ", "<br/>");
+      //var lines =  this.nl2br(this.data.letra);
+    var linha =this.insert_br( this.data.letra);
+    this.data.letra="";
+    this.data.letra=linha;
+     
+     
       this.solicitacaoService.add(this.data); 
       console.log('letra enviada com sucesso');
 

@@ -28,16 +28,16 @@ export class HeaderComponent {
   constructor(private _navCtrl: NavController,
               public letraService: LetraService) {
 
-    letraService.getAll().subscribe((data) => {
+    letraService.searchAll().subscribe((data) => {
       this.dados = data;
     });
   
-    Observable.combineLatest(this.startobs, this.endobs).subscribe((value) => {
+     Observable.combineLatest(this.startobs, this.endobs).subscribe((value) => {
       letraService.search(value[0], value[1]).subscribe((letras) => {
         console.log(letras);
         this.itensFiltrados = letras;
       });
-    })
+    }) 
 
   }
 

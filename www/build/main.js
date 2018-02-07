@@ -365,7 +365,7 @@ var HeaderComponent = (function () {
         this.endAt = new __WEBPACK_IMPORTED_MODULE_0_rxjs_Subject__["Subject"]();
         this.startobs = this.startAt.asObservable();
         this.endobs = this.endAt.asObservable();
-        letraService.getAll().subscribe(function (data) {
+        letraService.searchAll().subscribe(function (data) {
             _this.dados = data;
         });
         __WEBPACK_IMPORTED_MODULE_4_rxjs_Rx__["Observable"].combineLatest(this.startobs, this.endobs).subscribe(function (value) {
@@ -427,10 +427,10 @@ HeaderComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["n" /* Component */])({
         selector: 'header',template:/*ion-inline-start:"/home/sam/angular/Cassete/src/components/header/header.html"*/'<ion-navbar color="padrao">\n    \n    <div class="logo" *ngIf="mostarLogo">\n        <img src="../../assets/imgs/logoPage.png" (click)="levaNaHome()" width="60" height="40">\n    </div>  \n\n    <ion-searchbar *ngIf="showSearchbar" [(ngModel)]="searchTerm"\n        placeholder="Procurar por titulo ou cantor"\n        (ionInput)="filterItems($event)">\n    </ion-searchbar>\n\n    <ion-buttons class="btnSearch" end>\n        <button ion-button icon-only (click)="toggleSearchbar()" color="branco">\n            <ion-icon name="search"> </ion-icon>\n        </button>\n    </ion-buttons>\n\n</ion-navbar>\n\n<ion-list class="lista" >\n  <ion-item class="items" no-lines *ngFor=" let item of itensFiltrados" color="WhiteGhost" (click)="verItem(item)">\n    <h2>{{item.titulo}}</h2>\n    <p>{{item.cantor}}</p>\n  </ion-item>\n</ion-list>  \n  '/*ion-inline-end:"/home/sam/angular/Cassete/src/components/header/header.html"*/
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["e" /* NavController */],
-        __WEBPACK_IMPORTED_MODULE_3__providers_dados_service_letra_service__["a" /* LetraService */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["e" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["e" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__providers_dados_service_letra_service__["a" /* LetraService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_dados_service_letra_service__["a" /* LetraService */]) === "function" && _b || Object])
 ], HeaderComponent);
 
+var _a, _b;
 //# sourceMappingURL=header.js.map
 
 /***/ }),
@@ -467,7 +467,8 @@ var LetraService = (function () {
     function LetraService(afs, solicitacaoService) {
         this.afs = afs;
         this.solicitacaoService = solicitacaoService;
-        this.letraCollection = afs.collection('letras', function (ref) { return ref.orderBy('data').limit(12); });
+        this.letraCollection = afs.collection('letras', function (ref) { return ref.limit(12); });
+        this.letraCollectionSearch = afs.collection('letras', function (ref) { return ref.limit(5000); });
     }
     LetraService.prototype.getAll = function () {
         this.letras = this.letraCollection.snapshotChanges().map(function (actions) {
@@ -518,6 +519,16 @@ var LetraService = (function () {
             .startAt(start)
             .endAt(end); })
             .valueChanges();
+    };
+    LetraService.prototype.searchAll = function () {
+        this.letras = this.letraCollectionSearch.snapshotChanges().map(function (actions) {
+            return actions.map(function (action) {
+                var data = action.payload.doc.data();
+                var id = action.payload.doc.id;
+                return __assign({ id: id }, data);
+            });
+        });
+        return this.letras;
     };
     return LetraService;
 }());
@@ -796,11 +807,10 @@ LetraPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'page-letra',template:/*ion-inline-start:"/home/sam/angular/Cassete/src/pages/letra/letra.html"*/'<ion-header>\n  <header> </header>\n</ion-header>\n  \n<ion-content>\n  <div class="wrapper selectable" *ngFor="let dado of dados">\n    <ion-item >\n      <h4 style="font-weight:bold">{{dado.titulo |capitalizeHtml}}</h4>\n      <p>{{dado.cantor |capitalizeHtml}}</p>\n\n      <!-- FUNCIONARA APENAS APARTIR DA VERSAO 61 DO CHROME \n        SUPORTE PRA OUTRAS PLATAFORMAS CHEGAAO EM BREVE -->\n      <button *ngIf="btnPartilhar" item-end (click)="partilhar()"color="padrao" outline icon-left ion-button>\n        <ion-icon name="share"></ion-icon>\n        Partilhar\n      </button>\n      \n      <div item-end class="btn-wrapper">\n\n        <button *ngIf="btnWhatsapp" color="whatsapp" ion-button (click)="Partilharwhatsapp()">\n          <ion-icon name="logo-whatsapp"></ion-icon>\n        </button> \n\n        <button *ngIf="btnFacebook" color="facebook" ion-button (click)="PartilharFacebook()">\n          <ion-icon name="logo-facebook"></ion-icon>\n        </button>    \n    \n        <button *ngIf="btnTwitter" color="twitter" ion-button (click)="PartilharTwitter()">\n          <ion-icon name="logo-twitter"></ion-icon>\n        </button>\n\n      </div>\n      \n\n    </ion-item>\n  \n  <!-- Opcao de traducao caso for necessario\n    <ion-grid>\n      <ion-row class="opcoesLetra">\n        <p class="OpAtual">Letra</p>\n        <p class="OpAtual">Tradução</p>\n      </ion-row>\n    </ion-grid>\n  -->\n    <div class="letra" [innerHTML]="dado.letra | keepHtml">\n    \n    </div>\n  </div>\n\n  <!-- <div class="btn-wrapper" style="text-align: center; margin-top: 20px">   \n    <button color="padrao" outline icon-left ion-button>\n      <ion-icon name="md-create"></ion-icon>\n      Corrigir\n    </button>\n  </div> -->\n  <footer> </footer>\n</ion-content>'/*ion-inline-end:"/home/sam/angular/Cassete/src/pages/letra/letra.html"*/
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */],
-        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */],
-        __WEBPACK_IMPORTED_MODULE_2__providers_dados_service_letra_service__["a" /* LetraService */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__providers_dados_service_letra_service__["a" /* LetraService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_dados_service_letra_service__["a" /* LetraService */]) === "function" && _c || Object])
 ], LetraPage);
 
+var _a, _b, _c;
 //# sourceMappingURL=letra.js.map
 
 /***/ }),
@@ -851,6 +861,11 @@ var LetraNewPage = (function () {
         };
         this.monstrarMensagem = false;
     }
+    LetraNewPage.prototype.insert_br = function (text) {
+        var normalized_Enters = text.replace(/\r|\n/g, "\r\n");
+        var text_with_br = normalized_Enters.replace(/\r\n/g, "<br />");
+        return text_with_br;
+    };
     LetraNewPage.prototype.ionViewDidLoad = function () {
     };
     LetraNewPage.prototype.save = function () {
@@ -860,7 +875,10 @@ var LetraNewPage = (function () {
             console.log('letra nao enviada');
         }
         else {
-            this.data.letra.replace(" ", "<br/>");
+            //var lines =  this.nl2br(this.data.letra);
+            var linha = this.insert_br(this.data.letra);
+            this.data.letra = "";
+            this.data.letra = linha;
             this.solicitacaoService.add(this.data);
             console.log('letra enviada com sucesso');
             this.alertCtrl.create({
@@ -881,7 +899,7 @@ var LetraNewPage = (function () {
 }());
 LetraNewPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-letra-new',template:/*ion-inline-start:"/home/sam/angular/Cassete/src/pages/letra-new/letra-new.html"*/'<ion-header>\n  <header> </header>\n</ion-header>\n  \n<ion-content>\n\n  <ion-grid class="teste">\n    <ion-row>\n      <ion-col>\n        <form (ngSubmit)=\'save()\'>\n\n          <ion-item>\n            <ion-label stacked>Seu nome*:</ion-label>\n            <ion-input name="nome" type="text" value="" [(ngModel)]="data.nome" required></ion-input>\n          </ion-item>\n\n          <div *ngIf="monstrarMensagem" class="mensagem">\n            <span>Campo obrigatório</span>\n          </div>\n\n          <ion-item>\n            <ion-label stacked>Seu Email:</ion-label>\n            <ion-input name="email" type="text" value="" [(ngModel)]="data.email"></ion-input>\n          </ion-item>\n\n          <div style="text-align:center">\n            <span>(Nunca publicaremos seu email)</span>\n          </div>\n\n          <ion-item>\n            <ion-label stacked>Cantor/Grupo*:</ion-label>\n            <ion-input name="cantor" type="text" value="" [(ngModel)]="data.cantor" (ngModelChange)="data.cantor = $event.toLocaleLowerCase()" required></ion-input>\n          </ion-item>\n          \n          <div *ngIf="monstrarMensagem" class="mensagem">\n            <span>Campo obrigatório</span>\n          </div>\n\n          <ion-item>\n            <ion-label stacked>Título da musica*:</ion-label>\n            <ion-input name="titulo" type="text" value="" [(ngModel)]="data.titulo" (ngModelChange)="data.titulo = $event.toLocaleLowerCase()" required></ion-input>\n          </ion-item>\n          \n          <div *ngIf="monstrarMensagem" class="mensagem">\n            <span>Campo obrigatório</span>\n          </div>\n\n          <ion-item>\n            <ion-label stacked>Album:</ion-label>\n            <ion-input name="album" type="text" value="" [(ngModel)]="data.album"></ion-input>\n          </ion-item>\n          \n          <ion-item>\n            <ion-label stacked>Link video clipe:</ion-label>\n            <ion-input name="video" type="text" value="" [(ngModel)]="data.video" ></ion-input>\n          </ion-item>\n          \n          <ion-item>\n                <ion-label stacked>Letra*:</ion-label>\n                <ion-textarea placeholder="Escreva a letra aqui..."\n                style="width:100%; padding: 10px; margin-top: 3px;"\n                cols="30" rows="20" name="letra" [froalaEditor]\n                              [(froalaModel)]="data.letra" required></ion-textarea>\n          </ion-item>\n          \n          <div *ngIf="monstrarMensagem" class="mensagem">\n              <span>Campo obrigatório</span>\n          </div>\n          \n          <div class="mensagem">\n            <button ion-button type="submit" color="padrao" outline>\n              Enviar\n            </button>\n          </div>\n\n        </form>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n  <footer> </footer>\n</ion-content>\n'/*ion-inline-end:"/home/sam/angular/Cassete/src/pages/letra-new/letra-new.html"*/,
+        selector: 'page-letra-new',template:/*ion-inline-start:"/home/sam/angular/Cassete/src/pages/letra-new/letra-new.html"*/'<ion-header>\n  <header> </header>\n</ion-header>\n  \n<ion-content>\n\n  <ion-grid class="teste">\n    <ion-row>\n      <ion-col>\n        <form (ngSubmit)=\'save()\'>\n\n          <ion-item>\n            <ion-label stacked>Seu nome*:</ion-label>\n            <ion-input name="nome" type="text" value="" [(ngModel)]="data.nome" required></ion-input>\n          </ion-item>\n\n          <div *ngIf="monstrarMensagem" class="mensagem">\n            <span>Campo obrigatório</span>\n          </div>\n\n          <ion-item>\n            <ion-label stacked>Seu Email:</ion-label>\n            <ion-input name="email" type="text" value="" [(ngModel)]="data.email"></ion-input>\n          </ion-item>\n\n          <div style="text-align:center">\n            <span>(Nunca publicaremos seu email)</span>\n          </div>\n\n          <ion-item>\n            <ion-label stacked>Cantor/Grupo*:</ion-label>\n            <ion-input name="cantor" type="text" value="" [(ngModel)]="data.cantor" (ngModelChange)="data.cantor = $event.toLocaleLowerCase()" required></ion-input>\n          </ion-item>\n          \n          <div *ngIf="monstrarMensagem" class="mensagem">\n            <span>Campo obrigatório</span>\n          </div>\n\n          <ion-item>\n            <ion-label stacked>Título da musica*:</ion-label>\n            <ion-input name="titulo" type="text" value="" [(ngModel)]="data.titulo" (ngModelChange)="data.titulo = $event.toLocaleLowerCase()" required></ion-input>\n          </ion-item>\n          \n          <div *ngIf="monstrarMensagem" class="mensagem">\n            <span>Campo obrigatório</span>\n          </div>\n\n          <ion-item>\n            <ion-label stacked>Album:</ion-label>\n            <ion-input name="album" type="text" value="" [(ngModel)]="data.album"></ion-input>\n          </ion-item>\n          \n          <ion-item>\n            <ion-label stacked>Link video clipe:</ion-label>\n            <ion-input name="video" type="text" value="" [(ngModel)]="data.video" ></ion-input>\n          </ion-item>\n          \n          <ion-item>\n                <ion-label stacked>Letra*:</ion-label>\n                <ion-textarea placeholder="Escreva a letra aqui..."\n                style="width:100%; padding: 10px; margin-top: 3px;"\n                cols="30" rows="20" name="letra" \n                [(ngModel)] ="data.letra" required></ion-textarea>\n          </ion-item>\n          \n          <div *ngIf="monstrarMensagem" class="mensagem">\n              <span>Campo obrigatório</span>\n          </div>\n          \n          <div class="mensagem">\n            <button ion-button type="submit" color="padrao" outline>\n              Enviar\n            </button>\n          </div>\n\n        </form>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n<footer> </footer>\n</ion-content>\n<ion-header>\n  <header> </header>\n</ion-header>\n  \n<ion-content>\n\n  <ion-grid class="teste">\n    <ion-row>\n      <ion-col>\n        <form (ngSubmit)=\'save()\'>\n\n          <ion-item>\n            <ion-label stacked>Seu nome*:</ion-label>\n            <ion-input name="nome" type="text" value="" [(ngModel)]="data.nome" required></ion-input>\n          </ion-item>\n\n          <div *ngIf="monstrarMensagem" class="mensagem">\n            <span>Campo obrigatório</span>\n          </div>\n\n          <ion-item>\n            <ion-label stacked>Seu Email:</ion-label>\n            <ion-input name="email" type="text" value="" [(ngModel)]="data.email"></ion-input>\n          </ion-item>\n\n          <div style="text-align:center">\n            <span>(Nunca publicaremos seu email)</span>\n          </div>\n\n          <ion-item>\n            <ion-label stacked>Cantor/Grupo*:</ion-label>\n            <ion-input name="cantor" type="text" value="" [(ngModel)]="data.cantor" (ngModelChange)="data.cantor = $event.toLocaleLowerCase()" required></ion-input>\n          </ion-item>\n          \n          <div *ngIf="monstrarMensagem" class="mensagem">\n            <span>Campo obrigatório</span>\n          </div>\n\n          <ion-item>\n            <ion-label stacked>Título da musica*:</ion-label>\n            <ion-input name="titulo" type="text" value="" [(ngModel)]="data.titulo" (ngModelChange)="data.titulo = $event.toLocaleLowerCase()" required></ion-input>\n          </ion-item>\n          \n          <div *ngIf="monstrarMensagem" class="mensagem">\n            <span>Campo obrigatório</span>\n          </div>\n\n          <ion-item>\n            <ion-label stacked>Album:</ion-label>\n            <ion-input name="album" type="text" value="" [(ngModel)]="data.album"></ion-input>\n          </ion-item>\n          \n          <ion-item>\n            <ion-label stacked>Link video clipe:</ion-label>\n            <ion-input name="video" type="text" value="" [(ngModel)]="data.video" ></ion-input>\n          </ion-item>\n          \n          <ion-item>\n                <ion-label stacked>Letra*:</ion-label>\n                <ion-textarea placeholder="Escreva a letra aqui..."\n                style="width:100%; padding: 10px; margin-top: 3px;"\n                cols="30" rows="20" name="letra" \n                [(ngModel)] ="data.letra" required></ion-textarea>\n          </ion-item>\n          \n          <div *ngIf="monstrarMensagem" class="mensagem">\n              <span>Campo obrigatório</span>\n          </div>\n          \n          <div class="mensagem">\n            <button ion-button type="submit" color="padrao" outline>\n              Enviar\n            </button>\n          </div>\n\n        </form>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n<footer> </footer>\n</ion-content>\n'/*ion-inline-end:"/home/sam/angular/Cassete/src/pages/letra-new/letra-new.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */],
         __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */],
@@ -964,6 +982,8 @@ SolicitacaoPage = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(40);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_dados_service_letra_service__ = __webpack_require__(69);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular_components_alert_alert_controller__ = __webpack_require__(196);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__home_home__ = __webpack_require__(95);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -976,6 +996,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
 /**
 * Generated class for the SolicitacaoEditPage page.
 *
@@ -983,10 +1005,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 * Ionic pages and navigation.
 */
 var SolicitacaoEditPage = (function () {
-    function SolicitacaoEditPage(navCtrl, navParams, letraService) {
+    function SolicitacaoEditPage(navCtrl, navParams, letraService, alertCtrl) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.letraService = letraService;
+        this.alertCtrl = alertCtrl;
         this.data = {
             id: "",
             nome: "",
@@ -1013,8 +1036,21 @@ var SolicitacaoEditPage = (function () {
         this.data.letra = linhas;
     };
     SolicitacaoEditPage.prototype.save = function () {
+        var _this = this;
         this.data.letra.replace(" ", "<br/>");
         this.letraService.add(this.data);
+        this.alertCtrl.create({
+            title: 'Alerta',
+            message: 'Letra publicada com sucesso! estará disponivel em breve.',
+            buttons: [
+                {
+                    text: 'OK',
+                    handler: function () {
+                        _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_4__home_home__["a" /* HomePage */]);
+                    }
+                },
+            ]
+        }).present();
     };
     return SolicitacaoEditPage;
 }());
@@ -1022,9 +1058,10 @@ SolicitacaoEditPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'page-solicitacao-edit',template:/*ion-inline-start:"/home/sam/angular/Cassete/src/pages/solicitacao-edit/solicitacao-edit.html"*/'<ion-header>\n <header> </header>\n</ion-header>\n\n<ion-content>\n   <ion-card>\n\n       <ion-card-content padding>\n         <form (ngSubmit)=\'save()\'>\n\n           <ion-item>\n               <ion-label stacked>Letra</ion-label>\n               <ion-textarea    [froalaEditor]=\'options\'\n               [(froalaModel)]="data.letra"></ion-textarea>\n           </ion-item>\n{{data.id}}\n           <button ion-button type="submit" color="padrao" outline block>\n             Enviar\n           </button>\n\n         </form>\n\n       </ion-card-content>\n   </ion-card>\n <footer> </footer>\n</ion-content>\n'/*ion-inline-end:"/home/sam/angular/Cassete/src/pages/solicitacao-edit/solicitacao-edit.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_dados_service_letra_service__["a" /* LetraService */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__providers_dados_service_letra_service__["a" /* LetraService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_dados_service_letra_service__["a" /* LetraService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular_components_alert_alert_controller__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular_components_alert_alert_controller__["a" /* AlertController */]) === "function" && _d || Object])
 ], SolicitacaoEditPage);
 
+var _a, _b, _c, _d;
 //# sourceMappingURL=solicitacao-edit.js.map
 
 /***/ }),
