@@ -9,11 +9,18 @@
          <form (ngSubmit)='save()'>
 
            <ion-item>
-               <ion-label stacked>Letra</ion-label>
+               <ion-label style="font-size:25px;color:black;" stacked>Letra</ion-label>
                <ion-textarea    [froalaEditor]='options'
                [(froalaModel)]="data.letra"></ion-textarea>
            </ion-item>
-{{data.id}}
+
+           <ion-item>
+              <ion-label style="font-size:25px;color:black;" stacked>Tradução</ion-label>
+              <ion-textarea    [froalaEditor]='options'
+              [(froalaModel)]="data.traducao"></ion-textarea>
+          </ion-item>
+
+            {{data.id}}
            <button ion-button type="submit" color="padrao" outline block>
              Enviar
            </button>

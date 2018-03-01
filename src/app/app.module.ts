@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title  } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { HttpModule } from '@angular/http';
@@ -50,7 +50,7 @@ export const firebaseConfig = {
     HttpModule,
     ComponentsModule,
     IonicModule.forRoot(MyApp,{
-      mode: 'md' // 'md' | 'ios' | 'wp' //md em todas plataformas
+      mode: 'md', // 'md' | 'ios' | 'wp' //md em todas plataformas
       //preloadModules: true,
       //locationStrategy: 'path'
     },{
@@ -83,7 +83,8 @@ export const firebaseConfig = {
     SolicitacaoService,
     InAppBrowser,
     Deeplinks,
-    SocialSharing
+    SocialSharing,
+    Title 
   ]
 })
 export class AppModule {}

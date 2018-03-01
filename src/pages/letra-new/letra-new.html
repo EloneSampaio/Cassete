@@ -3,8 +3,9 @@
 </ion-header>
   
 <ion-content>
-
   <ion-grid class="teste">
+      <h1>Envio de letra</h1>
+      <div class="hr"> </div>
     <ion-row>
       <ion-col>
         <form (ngSubmit)='save()'>
@@ -19,17 +20,8 @@
           </div>
 
           <ion-item>
-            <ion-label stacked>Seu Email:</ion-label>
-            <ion-input name="email" type="text" value="" [(ngModel)]="data.email"></ion-input>
-          </ion-item>
-
-          <div style="text-align:center">
-            <span>(Nunca publicaremos seu email)</span>
-          </div>
-
-          <ion-item>
             <ion-label stacked>Cantor/Grupo*:</ion-label>
-            <ion-input name="cantor" type="text" value="" [(ngModel)]="data.cantor" (ngModelChange)="data.cantor = $event.toLocaleLowerCase()" required></ion-input>
+            <ion-input name="cantor" type="text" value="" [(ngModel)]="data.cantor" required></ion-input>
           </ion-item>
           
           <div *ngIf="monstrarMensagem" class="mensagem">
@@ -38,17 +30,12 @@
 
           <ion-item>
             <ion-label stacked>Título da musica*:</ion-label>
-            <ion-input name="titulo" type="text" value="" [(ngModel)]="data.titulo" (ngModelChange)="data.titulo = $event.toLocaleLowerCase()" required></ion-input>
+            <ion-input name="titulo" type="text" value="" [(ngModel)]="data.titulo" required></ion-input>
           </ion-item>
           
           <div *ngIf="monstrarMensagem" class="mensagem">
             <span>Campo obrigatório</span>
           </div>
-
-          <ion-item>
-            <ion-label stacked>Album:</ion-label>
-            <ion-input name="album" type="text" value="" [(ngModel)]="data.album"></ion-input>
-          </ion-item>
           
           <ion-item>
             <ion-label stacked>Link video clipe:</ion-label>
@@ -56,17 +43,31 @@
           </ion-item>
           
           <ion-item>
-                <ion-label stacked>Letra*:</ion-label>
-                <ion-textarea placeholder="Escreva a letra aqui..."
-                style="width:100%; padding: 10px; margin-top: 3px;"
-                cols="30" rows="20" name="letra" 
-                [(ngModel)] ="data.letra" required></ion-textarea>
+            <ion-label stacked>Letra*:</ion-label>
+            <ion-textarea placeholder="Escreva a letra aqui..."
+            style="width:100%; padding: 10px; margin-top: 3px;"
+            cols="30" rows="20" name="letra" 
+            [(ngModel)] ="data.letra" required></ion-textarea>
           </ion-item>
           
           <div *ngIf="monstrarMensagem" class="mensagem">
-              <span>Campo obrigatório</span>
+            <span>Campo obrigatório</span>
           </div>
-          
+
+          <ion-item class="caixaOpcional">
+            <label>Traduzir para Português:</label><br>
+            <input type="radio" (click)="selecionarOpcao('nao')" class="radio" checked name="opcao"> Não
+            <input type="radio" (click)="selecionarOpcao('sim')" class="radio" name="opcao"> Sim<br>
+          </ion-item> 
+
+          <ion-item *ngIf="caixaTraduzir">
+            <ion-label stacked>Tradução:</ion-label>
+            <ion-textarea placeholder="Escreva a tradução da letra aqui..."
+            style="width:100%; padding: 10px; margin-top: 3px;"
+            cols="30" rows="20" name="traducao" 
+            [(ngModel)] ="data.traducao"></ion-textarea>
+          </ion-item>
+
           <div class="mensagem">
             <button ion-button type="submit" color="padrao" outline>
               Enviar
@@ -77,86 +78,6 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-<footer> </footer>
-</ion-content>
-<ion-header>
-  <header> </header>
-</ion-header>
-  
-<ion-content>
 
-  <ion-grid class="teste">
-    <ion-row>
-      <ion-col>
-        <form (ngSubmit)='save()'>
-
-          <ion-item>
-            <ion-label stacked>Seu nome*:</ion-label>
-            <ion-input name="nome" type="text" value="" [(ngModel)]="data.nome" required></ion-input>
-          </ion-item>
-
-          <div *ngIf="monstrarMensagem" class="mensagem">
-            <span>Campo obrigatório</span>
-          </div>
-
-          <ion-item>
-            <ion-label stacked>Seu Email:</ion-label>
-            <ion-input name="email" type="text" value="" [(ngModel)]="data.email"></ion-input>
-          </ion-item>
-
-          <div style="text-align:center">
-            <span>(Nunca publicaremos seu email)</span>
-          </div>
-
-          <ion-item>
-            <ion-label stacked>Cantor/Grupo*:</ion-label>
-            <ion-input name="cantor" type="text" value="" [(ngModel)]="data.cantor" (ngModelChange)="data.cantor = $event.toLocaleLowerCase()" required></ion-input>
-          </ion-item>
-          
-          <div *ngIf="monstrarMensagem" class="mensagem">
-            <span>Campo obrigatório</span>
-          </div>
-
-          <ion-item>
-            <ion-label stacked>Título da musica*:</ion-label>
-            <ion-input name="titulo" type="text" value="" [(ngModel)]="data.titulo" (ngModelChange)="data.titulo = $event.toLocaleLowerCase()" required></ion-input>
-          </ion-item>
-          
-          <div *ngIf="monstrarMensagem" class="mensagem">
-            <span>Campo obrigatório</span>
-          </div>
-
-          <ion-item>
-            <ion-label stacked>Album:</ion-label>
-            <ion-input name="album" type="text" value="" [(ngModel)]="data.album"></ion-input>
-          </ion-item>
-          
-          <ion-item>
-            <ion-label stacked>Link video clipe:</ion-label>
-            <ion-input name="video" type="text" value="" [(ngModel)]="data.video" ></ion-input>
-          </ion-item>
-          
-          <ion-item>
-                <ion-label stacked>Letra*:</ion-label>
-                <ion-textarea placeholder="Escreva a letra aqui..."
-                style="width:100%; padding: 10px; margin-top: 3px;"
-                cols="30" rows="20" name="letra" 
-                [(ngModel)] ="data.letra" required></ion-textarea>
-          </ion-item>
-          
-          <div *ngIf="monstrarMensagem" class="mensagem">
-              <span>Campo obrigatório</span>
-          </div>
-          
-          <div class="mensagem">
-            <button ion-button type="submit" color="padrao" outline>
-              Enviar
-            </button>
-          </div>
-
-        </form>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-<footer> </footer>
+  <footer> </footer>
 </ion-content>

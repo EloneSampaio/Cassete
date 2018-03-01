@@ -2,14 +2,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
 import { SolicitacaoService } from '../../providers/dados-service/solicitacao-service';
 
-
-/**
- * Generated class for the SolicitacaoPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage({
   name: ' SolicitacaoPage',
   segment:'solicitacao'
@@ -23,20 +15,12 @@ export class SolicitacaoPage {
   dados: any = [];
   letra: any[];
 
-  constructor(public navCtrl: NavController,public solicitacaoService: SolicitacaoService) {
-
-    // this.ddProvider.obterDados().subscribe((data) => {
-
-    //   this.dados = data.musicas;
-    // });
-
-
+  constructor(public navCtrl: NavController,
+              public solicitacaoService: SolicitacaoService) {
     solicitacaoService.getAll().subscribe((data) => {
-
-       this.dados = data;
-      });
-
-
+      console.log(data)
+      this.dados = data;
+    });
   }
 
   verItem(dado){
@@ -44,7 +28,8 @@ export class SolicitacaoPage {
       cantor: dado.cantor,
       titulo: dado.titulo,
       letra: dado.letra,
-	  id: dado.id
+      traducao: dado.traducao,
+	    id: dado.id
     });
   }
 

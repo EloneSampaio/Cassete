@@ -33,26 +33,30 @@ export class SolicitacaoEditPage {
  id: string;
 
  data = {
-   id:"",
    nome: "",
    email: "",
    cantor: "",
    titulo: "",
    album: "",
    letra: "",
+   traducao: "",
    data: Date.now(),
    video: "",
-   img: 'assets/imgs/padrao.png'
+   visita: 1,
+   img: 'https://yt3.ggpht.com/a-/AJLlDp2393vbcSTCRbdr4dbiEgIOfEeayC6tDoQKGw=s900-mo-c-c0xffffffff-rj-k-no'
  };
 
- constructor(public navCtrl: NavController, public navParams: NavParams, public letraService: LetraService,private alertCtrl: AlertController) { }
+ constructor(public navCtrl: NavController, 
+            public navParams: NavParams, 
+            public letraService: LetraService,
+            private alertCtrl: AlertController) { }
 
  ionViewDidLoad() {
-   this.data.id = this.navParams.get('id');
    this.data.cantor = this.navParams.get('cantor');
    this.data.titulo = this.navParams.get('titulo');
-   //this.imagem = this.navParams.get('imagem');
-      var linhas = this.navParams.get('letra');
+   this.data.traducao = this.navParams.get('traducao');
+   
+   let linhas = this.navParams.get('letra');
    this.data.letra = linhas;
 
  }
@@ -60,6 +64,7 @@ export class SolicitacaoEditPage {
  save(){
 
    this.data.letra.replace(" ", "<br/>");
+   this.data.traducao.replace(" ", "<br/>");
    this.letraService.add(this.data);
 
    this.alertCtrl.create({

@@ -14,6 +14,7 @@ export class HeaderComponent {
 
   showSearchbar: boolean = false;
   mostarLogo: boolean = true;
+  mostrarLista: boolean;
 	itensFiltrados: any = [];
   searchTerm: string = '';
   dados: any = [];
@@ -52,7 +53,7 @@ export class HeaderComponent {
 
   toggleSearchbar() {
     this.showSearchbar = !this.showSearchbar;
-    this.mostarLogo = !this.mostarLogo;
+    this.mostarLogo = !this.mostarLogo
     console.log(this.itensFiltrados);
   }
 
@@ -65,12 +66,12 @@ export class HeaderComponent {
 
     //Nao filtrar a array caso o valor for vazio
     if(q.trim() == '') {
-      return  this.itensFiltrados = null;
+      this.itensFiltrados = null
+      this.mostrarLista = false;
     }
-    // else {
-    //   this.startAt.next(q);
-    //   this.endAt.next(q + "\uf8ff");
-    // }
+    else {
+      this.mostrarLista = true;
+     }
       
 	  this.itensFiltrados = this.dados.filter( (item) => {
 	  	if(item.titulo.toLowerCase().indexOf(this.searchTerm.toLowerCase()) > -1){
@@ -92,7 +93,8 @@ export class HeaderComponent {
     this._navCtrl.setRoot("LetraPage",{
       cantor: dado.cantor,
       titulo: dado.titulo,
-      letra: dado.letra
+      letra: dado.letra,
+      id: dado.id
     });
   }
 

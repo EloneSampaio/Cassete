@@ -17,7 +17,7 @@
 
 </ion-navbar>
 
-<ion-list class="lista" >
+<ion-list class="lista" *ngIf="mostrarLista">
   <ion-item class="items" no-lines *ngFor=" let item of itensFiltrados" color="WhiteGhost" (click)="verItem(item)">
     <h2>{{item.titulo}}</h2>
     <p>{{item.cantor}}</p>

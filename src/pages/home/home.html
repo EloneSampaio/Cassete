@@ -22,7 +22,7 @@
    <ion-row class="centro"wrap>
      <ion-col col-6 col-sm-6 col-md-3 text-center *ngFor="let dado of dados">
        <div (click)="verItem(dado)">
-         <img width="130px" height="130px" src="{{ dado.img}}">
+         <img width="130px" height="130px" src="{{dado.img}}">
          <h6>{{ dado.cantor |capitalizeHtml}}</h6>
          <p>{{ dado.titulo | capitalizeHtml}}</p>
        </div>

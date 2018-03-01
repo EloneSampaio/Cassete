@@ -1,9 +1,7 @@
-import { Component } from '@angular/core';
-import { IonicPage,
-         NavController,
-         NavParams } from 'ionic-angular';
+import { Component,OnInit } from '@angular/core';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { LetraService } from '../../providers/dados-service/letra-service';
-//import { SocialSharing } from '@ionic-native/social-sharing';
+import { Title } from '@angular/platform-browser';
 
 @IonicPage({
   name: 'LetraPage',
@@ -13,15 +11,18 @@ import { LetraService } from '../../providers/dados-service/letra-service';
 })
 @Component({
   selector: 'page-letra',
-  templateUrl: 'letra.html'
+  templateUrl: 'letra.html',
+  providers: [Title]
 })
 
-export class LetraPage {
+export class LetraPage implements OnInit {
 
   cantor: string;
   titulo: string;
   imagem: string;
   letra: string;
+  visita: number;
+  id: string;
 
   btnPartilhar: boolean;
   btnFacebook:  boolean;
@@ -29,15 +30,22 @@ export class LetraPage {
   btnWhatsapp:  boolean;
 
   url: any = document.location.href;
-
-  // items: any;
-	// itensFiltrados: any;
-  // searchTerm: string = '';
   dados: any = [];
   
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
-              public letraService: LetraService) { }
+              public letraService: LetraService,
+              private titleService: Title) { 
+
+                const cantor = this.navParams.get('cantor');
+                const titulo = this.navParams.get('titulo');
+                
+
+                
+                
+
+                this.titleService.setTitle(`${cantor} - ${titulo} - grandacassete.com`);
+              }
 
   
   partilhar(){
@@ -58,6 +66,10 @@ export class LetraPage {
       });
     }
 
+  }
+  ngOnInit() {
+    // this.titleService.setTitle(`${titulo} - ${cantor}`);
+    //document.title = `${titulo} - ${cantor}`
   }
 
   ionViewDidLoad() {
@@ -83,28 +95,32 @@ export class LetraPage {
     //this.letra = this.navParams.get('letra').letra;
     this.letraService.getByTituloAndCantor(titulo,cantor).subscribe((data) => {
       this.dados = data;
-      console.log(data);
+      
      });
      this.cantor = this.dados.cantor
      this.titulo = this.dados.titulo;
      this.letra=this.dados.letra;
+     this.id=this.dados.id;
+     this.visita=this.dados.visita;
+    
+     //this._app.setTitle(`${titulo} - ${cantor}`);
   }
 
   Partilharwhatsapp(){
-    const url = document.location.href;
+    //const url = document.location.href;
     const cantor = this.navParams.get('cantor');
     const titulo = this.navParams.get('titulo');
 
-    document.location.href = `whatsapp://send?text=${cantor} - ${titulo} ${url}`
+    document.location.href = 'whatsapp://send?text='+cantor +' - '+titulo + encodeURIComponent(location.href)
   }
 
   PartilharFacebook(){
-    window.open(
-      'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href), 
-      'facebook-share-dialog', 
-      'width=626,height=436'
-    ); 
-      return false;
+   window.open(
+     'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href), 
+     'facebook-share-dialog', 
+     'width=626,height=436'
+   ); 
+     return false;
   }
 
   PartilharTwitter(){
@@ -119,6 +135,19 @@ export class LetraPage {
           titulo: dado.titulo,
           letra: dado.letra
       });
+  }
+
+  ionViewWillLeave(){
+var data={
+  visita: 0
+};
+   
+    var id=this.navParams.get('id');
+    var  visita=this.navParams.get('visita');
+    data.visita= visita+1;
+    console.log(id);
+    this.letraService.updateVisita(id,data);
+
   }
 
 }

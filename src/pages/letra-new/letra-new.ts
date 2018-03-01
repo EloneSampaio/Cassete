@@ -22,17 +22,17 @@ import { SolicitacaoService } from '../../providers/dados-service/solicitacao-se
 export class LetraNewPage {
 
   data = {
-
-  nome: "",
-  email: "",
-  cantor: "",
-  titulo: "",
-  album: "",
-  letra: "",
-  data: Date.now(),
-  video: ""
+    nome: "",
+    cantor: "",
+    titulo: "",
+    letra: "",
+    traducao: "",
+    data: Date.now(),
+    visita: 1,
+    video: ""
   };
   monstrarMensagem: boolean = false;
+  caixaTraduzir: boolean = false;
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
@@ -48,11 +48,13 @@ export class LetraNewPage {
   
   }
 
-
-  ionViewDidLoad() {
-    
+  selecionarOpcao(texto){
+    if(texto == 'nao'){
+      this.caixaTraduzir = false;
+    } else if(texto == 'sim'){
+      this.caixaTraduzir = true;
+    }
   }
-
   save(){
 
     if(this.data.nome == '' || this.data.cantor == '' || this.data.titulo == '' || this.data.letra == ''){
@@ -61,10 +63,15 @@ export class LetraNewPage {
     }
     else{
       //var lines =  this.nl2br(this.data.letra);
-    var linha =this.insert_br( this.data.letra);
-    this.data.letra="";
-    this.data.letra=linha;
-     
+    var linha = this.insert_br( this.data.letra);
+
+    var linhatraducao  = this.insert_br( this.data.traducao);
+
+    this.data.letra = "";
+    this.data.traducao = "";
+
+    this.data.letra = linha;
+    this.data.traducao = linhatraducao 
      
       this.solicitacaoService.add(this.data); 
       console.log('letra enviada com sucesso');

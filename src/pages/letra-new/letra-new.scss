@@ -7,7 +7,15 @@ page-letra-new {
         color: #f53d3d;
         text-align: center
     }
-
+    h1{
+        color: map-get($colors, padrao);
+        margin-left: 20px;
+    }
+    input.radio {
+      margin: 10px 0 0 10px;
+      height: 20px;
+      width: 20px;
+    }
     @media screen and (min-width: 768px) {
         .teste{
             width: 50%;

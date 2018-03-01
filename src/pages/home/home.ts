@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { LetraService } from '../../providers/dados-service/letra-service';
-//import { LetraPage } from '../letra/letra';
-//import { Observable } from 'rxjs/Rx';
+import { Title } from '@angular/platform-browser';
 
 @Component({
  selector: 'page-home',
@@ -13,12 +12,14 @@ export class HomePage {
  dados: any = [];
 
  constructor(private navCtrl: NavController,
-             public letraService: LetraService) {
+             public letraService: LetraService,
+             private titleService: Title) {
 
-   letraService.getAll().subscribe((data) => {
-      this.dados = data;
-     });
+            letraService.getAll().subscribe((data) => {
+              this.dados = data;
+            });
 
+            this.titleService.setTitle(`Granda Cassete - A maior plataforma de letras de musicas Africanas`);  
    }
 
  abrirPagina() {
@@ -33,7 +34,9 @@ export class HomePage {
   this.navCtrl.setRoot("LetraPage",{
     cantor: dado.cantor,
     titulo: dado.titulo,
-    letra: dado.letra
+    letra: dado.letra,
+    id: dado.id,
+    visita: dado.visita
   });
 }
 

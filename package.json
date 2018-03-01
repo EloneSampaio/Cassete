@@ -1,8 +1,8 @@
 {
   "name": "grandacassete",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "author": "Ionic Framework",
-  "homepage": "http://grandacassete.com/",
+  "homepage": "https://grandacassete.com/",
   "private": true,
   "scripts": {
     "clean": "ionic-app-scripts clean",

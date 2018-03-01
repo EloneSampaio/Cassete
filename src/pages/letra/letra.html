@@ -5,8 +5,8 @@
 <ion-content>
   <div class="wrapper selectable" *ngFor="let dado of dados">
     <ion-item >
-      <h4 style="font-weight:bold">{{dado.titulo |capitalizeHtml}}</h4>
-      <p>{{dado.cantor |capitalizeHtml}}</p>
+      <h4 class="titulo">{{dado.titulo |capitalizeHtml}}</h4>
+      <p class="cantor">{{dado.cantor |capitalizeHtml}}</p>
 
       <!-- FUNCIONARA APENAS APARTIR DA VERSAO 61 DO CHROME 
         SUPORTE PRA OUTRAS PLATAFORMAS CHEGAAO EM BREVE -->

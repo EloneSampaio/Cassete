@@ -22,13 +22,14 @@ header {
         }
         
         ion-searchbar {
-            width: 50%;
+            width: 40%;
             margin: 0 auto
         }
-        .lista .items {
-            width: 50%;
-            margin: auto
-        } 
+        .lista{
+            //border-bottom: 1px solid #000000 !important;
+            width: 40% !important;
+            left: 31em;
+        }
     }
 
     #resultado{
@@ -43,7 +44,7 @@ header {
         width: 100%;
         // border-left: 1px solid #000000;
         // border-right: 1px solid #000000;
-        // border-bottom: 1px solid #000000;
+        border-bottom: 1px solid #000000 !important;
     }
 
     .items:hover{

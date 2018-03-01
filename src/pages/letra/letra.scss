@@ -1,11 +1,18 @@
 page-letra {
     .wrapper{
         margin: 20px 20px 20px 20px;
-
+        
+        .titulo{
+            font-weight: bold
+        }
         .letra{
             margin-top: 20px;
         }
-    
+        
+        .letra{
+            //line-height: normal;
+            line-height: 0.5;
+        }
         .opcoesLetra p{
             padding: 5px 0;
             margin-right: 15px;
@@ -26,8 +33,20 @@ page-letra {
         .wrapper{
             position: relative;
             top: 2em;
-            width: 60%;
+            width: 50%;
             margin: 0 auto;
+        }
+        .titulo{
+            font-size: 25px;
+            color: map-get($colors, padrao )
+        }
+        .cantor{
+            color: black;
+            font-size: 16px;
+        }
+        .letra{
+            text-align: center;
+            line-height: 0.5 !important;
         }
         .wrapper .letra{
             margin-left: 15px; 

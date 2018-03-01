@@ -26,10 +26,14 @@ self.toolbox.precache(
 // dynamically cache any other local assets
 //self.toolbox.router.any('/*', self.toolbox.fastest);
 
-/* strategy will first attempt to load the assets again from the network, 
-and if the network is not available it will fall back to the cache. */
-self.toolbox.router.any('/*', self.toolbox.networkFirst);
+/* Handle the request by trying to fetch the URL from the network. 
+If the fetch fails, fail the request. Essentially the same as 
+not creating a route for the URL at all. */
+self.toolbox.router.any('/*', self.toolbox.networkOnly);
 
 // for any other requests go to the network, cache,
 // and then only use that cached resource if your user goes offline
-self.toolbox.router.default = self.toolbox.networkFirst;
+//self.toolbox.router.default = self.toolbox.networkFirst;
+
+//Handle the request by trying to fetch the URL from the network.
+self.toolbox.router.default = self.toolbox.networkOnly;

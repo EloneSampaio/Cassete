@@ -1,8 +1,9 @@
 {
   "name": "Granda Cassete",
-  "short_name": "Cassete",
+  "short_name": "Granda Ca",
   "start_url": "index.html",
   "display": "standalone",
+  "orientation": "portrait",
   "icons": [
     {
       "src": "assets/imgs/logo-48x48.png",

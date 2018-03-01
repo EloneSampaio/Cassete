@@ -47269,6 +47269,12 @@ body {
   user-select: text;
 }
 
+.hr {
+  border-bottom: 1px solid #ccc;
+  margin: 10px 0;
+  width: 100%;
+}
+
 footer .rodape {
   padding: 1rem;
   background-color: #efefef;
@@ -47318,12 +47324,12 @@ header .searchbar-input {
     display: none;
   }
   header ion-searchbar {
-    width: 50%;
+    width: 40%;
     margin: 0 auto;
   }
-  header .lista .items {
-    width: 50%;
-    margin: auto;
+  header .lista {
+    width: 40% !important;
+    left: 31em;
   }
 }
 
@@ -47338,6 +47344,7 @@ header .lista {
   position: absolute;
   top: 55px;
   width: 100%;
+  border-bottom: 1px solid #000000 !important;
 }
 
 header .items:hover {
@@ -47371,12 +47378,6 @@ page-home .card-subtitle {
   color: #000000 !important;
 }
 
-page-home .hr {
-  border-bottom: 1px solid #ccc;
-  margin: 10px 0;
-  width: 100%;
-}
-
 page-home h4 {
   text-align: center;
   margin-top: 30px;
@@ -47396,8 +47397,16 @@ page-letra .wrapper {
   margin: 20px 20px 20px 20px;
 }
 
+page-letra .wrapper .titulo {
+  font-weight: bold;
+}
+
 page-letra .wrapper .letra {
   margin-top: 20px;
+}
+
+page-letra .wrapper .letra {
+  line-height: 0.5;
 }
 
 page-letra .wrapper .opcoesLetra p {
@@ -47419,8 +47428,20 @@ page-letra .wrapper .letra {
   page-letra .wrapper {
     position: relative;
     top: 2em;
-    width: 60%;
+    width: 50%;
     margin: 0 auto;
+  }
+  page-letra .titulo {
+    font-size: 25px;
+    color: #A020F0;
+  }
+  page-letra .cantor {
+    color: black;
+    font-size: 16px;
+  }
+  page-letra .letra {
+    text-align: center;
+    line-height: 0.5 !important;
   }
   page-letra .wrapper .letra {
     margin-left: 15px;
@@ -47436,6 +47457,17 @@ page-letra-new .mensagem {
   font-size: 12px;
   color: #f53d3d;
   text-align: center;
+}
+
+page-letra-new h1 {
+  color: #A020F0;
+  margin-left: 20px;
+}
+
+page-letra-new input.radio {
+  margin: 10px 0 0 10px;
+  height: 20px;
+  width: 20px;
 }
 
 @media screen and (min-width: 768px) {

@@ -1,5 +1,6 @@
+import { LetraI } from './../../../../teste/Cassete/src/models/letra/letra.interface';
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import { LetraI } from '../../models/letra/letra.interface';
 import { SolicitacaoService } from '../dados-service/solicitacao-service';
@@ -10,13 +11,14 @@ export class LetraService {
 
   letraCollection:AngularFirestoreCollection<LetraI>;
   letraCollectionSearch:AngularFirestoreCollection<LetraI>;
+  private letraDoc: AngularFirestoreDocument<LetraI>;
   letras: Observable<LetraI[]>;
   
   
   constructor(private afs: AngularFirestore, 
               private solicitacaoService: SolicitacaoService) {
 
-    this.letraCollection=afs.collection<LetraI>('letras',ref=> ref.limit(12));
+    this.letraCollection=afs.collection<LetraI>('letras',ref=> ref.limit(12).orderBy('visita','desc'));
     this.letraCollectionSearch=afs.collection<LetraI>('letras',ref=> ref.limit(5000));
    }
 
@@ -94,6 +96,18 @@ export class LetraService {
            })
           })
           return this.letras;
+  }
+
+
+  updateVisita(id,data){ 
+    console.log(id);
+    
+    this.afs.doc('letras/'+id).update(data).then(result=>{
+      console.log("update"+result);
+}).catch(error=>{
+ console.error(error);
+})
+
   }
  
 }
