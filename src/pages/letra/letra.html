@@ -4,12 +4,12 @@
   
 <ion-content>
   <div class="wrapper selectable" *ngFor="let dado of dados">
-    <ion-item >
-      <h4 class="titulo">{{dado.titulo |capitalizeHtml}}</h4>
-      <p class="cantor">{{dado.cantor |capitalizeHtml}}</p>
 
-      <!-- FUNCIONARA APENAS APARTIR DA VERSAO 61 DO CHROME 
-        SUPORTE PRA OUTRAS PLATAFORMAS CHEGAAO EM BREVE -->
+    <ion-item >
+
+      <h4 class="titulo">{{dado.titulo | capitalizeHtml | textEdit}}</h4>
+      <p class="cantor">{{dado.cantor | capitalizeHtml | textEdit}}</p>
+
       <button *ngIf="btnPartilhar" item-end (click)="partilhar()"color="padrao" outline icon-left ion-button>
         <ion-icon name="share"></ion-icon>
         Partilhar
@@ -30,21 +30,21 @@
         </button>
 
       </div>
-      
 
     </ion-item>
   
-  <!-- Opcao de traducao caso for necessario
-    <ion-grid>
+    <ion-grid *ngIf="opcaoTraducao && dado.traducao">
       <ion-row class="opcoesLetra">
-        <p class="OpAtual">Letra</p>
-        <p class="OpAtual">Tradução</p>
+        <p id="tab1" class="OpAtual" (click)="mudarOriginal()">Letra</p>
+        <p id="tab2" (click)="mudartraducao()">Tradução</p>
       </ion-row>
     </ion-grid>
-  -->
-    <div class="letra" [innerHTML]="dado.letra | keepHtml">
-    
+
+    <div *ngIf="letraTab" class="letra" [innerHTML]="dado.letra | keepHtml"> 
+
     </div>
+    
+    <div *ngIf="traducaoTab" class="letra" [innerHTML]="dado.traducao | keepHtml"> </div>
   </div>
 
   <!-- <div class="btn-wrapper" style="text-align: center; margin-top: 20px">   

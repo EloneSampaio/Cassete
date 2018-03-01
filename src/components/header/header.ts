@@ -2,7 +2,6 @@ import { Subject } from 'rxjs/Subject';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { LetraService } from '../../providers/dados-service/letra-service';
-
 import { Observable } from 'rxjs/Rx';
 import { HomePage } from '../../pages/home/home';
 
@@ -42,6 +41,9 @@ export class HeaderComponent {
 
   }
 
+   levaNaHome(){
+     this._navCtrl.setRoot(HomePage);
+   }
   ngOnInit() { 
     if (window.matchMedia("(min-width: 768px)").matches) {
       this.showSearchbar = true;
@@ -84,17 +86,12 @@ export class HeaderComponent {
     });   
      
   }
-  
-  levaNaHome(){
-    this._navCtrl.setRoot(HomePage);
-  }
 
   verItem(dado){
     this._navCtrl.setRoot("LetraPage",{
       cantor: dado.cantor,
       titulo: dado.titulo,
-      letra: dado.letra,
-      id: dado.id
+      letra: dado.letra
     });
   }
 

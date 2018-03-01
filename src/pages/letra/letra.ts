@@ -1,7 +1,8 @@
-import { Component,OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { LetraService } from '../../providers/dados-service/letra-service';
 import { Title } from '@angular/platform-browser';
+
 
 @IonicPage({
   name: 'LetraPage',
@@ -15,19 +16,17 @@ import { Title } from '@angular/platform-browser';
   providers: [Title]
 })
 
-export class LetraPage implements OnInit {
-
-  cantor: string;
-  titulo: string;
-  imagem: string;
-  letra: string;
-  visita: number;
-  id: string;
+export class LetraPage{
 
   btnPartilhar: boolean;
   btnFacebook:  boolean;
   btnTwitter:   boolean;
   btnWhatsapp:  boolean;
+  
+  letraTab: boolean = true;
+  traducaoTab: boolean = false;
+
+  opcaoTraducao: boolean;
 
   url: any = document.location.href;
   dados: any = [];
@@ -35,17 +34,7 @@ export class LetraPage implements OnInit {
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
               public letraService: LetraService,
-              private titleService: Title) { 
-
-                const cantor = this.navParams.get('cantor');
-                const titulo = this.navParams.get('titulo');
-                
-
-                
-                
-
-                this.titleService.setTitle(`${cantor} - ${titulo} - grandacassete.com`);
-              }
+              private titleService: Title) { }
 
   
   partilhar(){
@@ -56,9 +45,9 @@ export class LetraPage implements OnInit {
     //WEB SHARE API FUNCIONA APENAS APARTIR DA VERSAO 61 DO CHROME PARA ANDROID
     if(navegador.share){
       navegador.share({
-        'title': 'Granda Cassete',
+        'title': '#GrandaCassete',
         'text': `${cantor} - ${titulo}`,
-        'url': this.url
+        'url': location.href
       }).then(function() {
         console.log('Partilhado com sucesso');
       }).catch(function(error) {
@@ -67,12 +56,15 @@ export class LetraPage implements OnInit {
     }
 
   }
-  ngOnInit() {
-    // this.titleService.setTitle(`${titulo} - ${cantor}`);
-    //document.title = `${titulo} - ${cantor}`
-  }
 
   ionViewDidLoad() {
+    //Mostar Tab de traducao a menos que for mobile
+    if (navigator.userAgent.match(/iPhone|Android/i)) {
+      this.opcaoTraducao = true;
+    } else{
+      this.opcaoTraducao = false;
+    }
+
     let navegador = (window.navigator as any);
 
     if (navegador.share) {
@@ -84,7 +76,6 @@ export class LetraPage implements OnInit {
       if (navigator.userAgent.match(/iPhone|Android/i)) {
         this.btnWhatsapp = true;
       } 
-      
       this.btnFacebook = true;
       this.btnTwitter = true;
     }
@@ -95,15 +86,28 @@ export class LetraPage implements OnInit {
     //this.letra = this.navParams.get('letra').letra;
     this.letraService.getByTituloAndCantor(titulo,cantor).subscribe((data) => {
       this.dados = data;
-      
-     });
-     this.cantor = this.dados.cantor
-     this.titulo = this.dados.titulo;
-     this.letra=this.dados.letra;
-     this.id=this.dados.id;
-     this.visita=this.dados.visita;
+      if(this.dados[0].traducao){
+        this.titleService.setTitle(`${titulo} (tradução) - ${cantor} - grandacassete.com`);
+      } else{
+        this.titleService.setTitle(`${titulo} - ${cantor} - grandacassete.com`);
+      }
+    });
+  }
+
+  mudarOriginal(){
+    this.letraTab = true;
+    this.traducaoTab = false;
+
+    document.getElementById("tab1").classList.add("OpAtual");
+    document.getElementById("tab2").classList.remove("OpAtual");
+  }
+
+  mudartraducao(){
+    this.letraTab = false;
+    this.traducaoTab = true;
     
-     //this._app.setTitle(`${titulo} - ${cantor}`);
+    document.getElementById("tab2").classList.add("OpAtual");
+    document.getElementById("tab1").classList.remove("OpAtual");
   }
 
   Partilharwhatsapp(){
@@ -146,7 +150,7 @@ var data={
     var  visita=this.navParams.get('visita');
     data.visita= visita+1;
     console.log(id);
-    this.letraService.updateVisita(id,data);
+    this.letraService.updateContador(id,data);
 
   }
 

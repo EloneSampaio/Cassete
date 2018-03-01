@@ -1,8 +1,7 @@
-import { LetraI } from './../../../../teste/Cassete/src/models/letra/letra.interface';
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
+import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
-import { LetraI } from '../../models/letra/letra.interface';
+
 import { SolicitacaoService } from '../dados-service/solicitacao-service';
 
 @Injectable()
@@ -11,7 +10,7 @@ export class LetraService {
 
   letraCollection:AngularFirestoreCollection<LetraI>;
   letraCollectionSearch:AngularFirestoreCollection<LetraI>;
-  private letraDoc: AngularFirestoreDocument<LetraI>;
+
   letras: Observable<LetraI[]>;
   
   
@@ -99,7 +98,7 @@ export class LetraService {
   }
 
 
-  updateVisita(id,data){ 
+  updateContador(id,data){ 
     console.log(id);
     
     this.afs.doc('letras/'+id).update(data).then(result=>{

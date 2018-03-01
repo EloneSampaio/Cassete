@@ -115,12 +115,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_jquery__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_froala_editor_js_froala_editor_pkgd_min_js__ = __webpack_require__(278);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_froala_editor_js_froala_editor_pkgd_min_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_froala_editor_js_froala_editor_pkgd_min_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_core__ = __webpack_require__(1);
 
 
 
 window["$"] = __WEBPACK_IMPORTED_MODULE_2_jquery__;
 window["jQuery"] = __WEBPACK_IMPORTED_MODULE_2_jquery__;
 
+
+//enableProdMode();
+// Ativar o modo de produção a menos que seja executado localmente
+if (!/localhost/.test(document.location.host)) {
+    Object(__WEBPACK_IMPORTED_MODULE_4__angular_core__["_20" /* enableProdMode */])();
+}
 Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_1__app_module__["a" /* AppModule */]);
 //# sourceMappingURL=main.js.map
 
@@ -132,7 +139,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 "use strict";
 /* unused harmony export firebaseConfig */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(34);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(41);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(364);
@@ -150,16 +157,18 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__providers_dados_service_solicitacao_service__ = __webpack_require__(105);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pipes_pipes_module__ = __webpack_require__(704);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_home_home__ = __webpack_require__(69);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__pages_letra_letra__ = __webpack_require__(707);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_letra_new_letra_new__ = __webpack_require__(708);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__pages_solicitacao_solicitacao__ = __webpack_require__(709);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__pages_solicitacao_edit_solicitacao_edit__ = __webpack_require__(710);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__pages_letra_letra__ = __webpack_require__(708);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_letra_new_letra_new__ = __webpack_require__(709);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__pages_solicitacao_solicitacao__ = __webpack_require__(710);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__pages_solicitacao_edit_solicitacao_edit__ = __webpack_require__(711);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__angular_common__ = __webpack_require__(85);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -210,6 +219,8 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_12__components_components_module__["a" /* ComponentsModule */],
             __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["d" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_9__app_component__["a" /* MyApp */], {
                 mode: 'md',
+                //preloadModules: true,
+                locationStrategy: 'path'
             }, {
                 links: [
                     { component: __WEBPACK_IMPORTED_MODULE_16__pages_home_home__["a" /* HomePage */], name: 'HomePage', segment: '' },
@@ -236,6 +247,7 @@ AppModule = __decorate([
         ],
         providers: [
             { provide: __WEBPACK_IMPORTED_MODULE_1__angular_core__["v" /* ErrorHandler */], useClass: __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["c" /* IonicErrorHandler */] },
+            { provide: __WEBPACK_IMPORTED_MODULE_21__angular_common__["a" /* APP_BASE_HREF */], useValue: '/' },
             __WEBPACK_IMPORTED_MODULE_13__providers_dados_service_letra_service__["a" /* LetraService */],
             __WEBPACK_IMPORTED_MODULE_14__providers_dados_service_solicitacao_service__["a" /* SolicitacaoService */],
             __WEBPACK_IMPORTED_MODULE_4__ionic_native_in_app_browser__["a" /* InAppBrowser */],
@@ -258,7 +270,6 @@ AppModule = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(41);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__pages_home_home__ = __webpack_require__(69);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser__ = __webpack_require__(31);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -271,21 +282,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
 var MyApp = (function () {
-    function MyApp(platform, titleService) {
-        this.titleService = titleService;
+    function MyApp(platform) {
         this.rootPage = __WEBPACK_IMPORTED_MODULE_2__pages_home_home__["a" /* HomePage */];
     }
-    MyApp.prototype.setTitle = function (newTitle) {
-        this.titleService.setTitle(newTitle);
-    };
     return MyApp;
 }());
 MyApp = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({template:/*ion-inline-start:"/home/sam/angular/Cassete/src/app/app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"/home/sam/angular/Cassete/src/app/app.html"*/
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* Platform */], __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser__["f" /* Title */]])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* Platform */]])
 ], MyApp);
 
 //# sourceMappingURL=app.component.js.map
@@ -380,6 +386,9 @@ var HeaderComponent = (function () {
             });
         });
     }
+    HeaderComponent.prototype.levaNaHome = function () {
+        this._navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_5__pages_home_home__["a" /* HomePage */]);
+    };
     HeaderComponent.prototype.ngOnInit = function () {
         if (window.matchMedia("(min-width: 768px)").matches) {
             this.showSearchbar = true;
@@ -416,27 +425,23 @@ var HeaderComponent = (function () {
             return false;
         });
     };
-    HeaderComponent.prototype.levaNaHome = function () {
-        this._navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_5__pages_home_home__["a" /* HomePage */]);
-    };
     HeaderComponent.prototype.verItem = function (dado) {
         this._navCtrl.setRoot("LetraPage", {
             cantor: dado.cantor,
             titulo: dado.titulo,
-            letra: dado.letra,
-            id: dado.id
+            letra: dado.letra
         });
     };
     return HeaderComponent;
 }());
 HeaderComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["n" /* Component */])({
-        selector: 'header',template:/*ion-inline-start:"/home/sam/angular/Cassete/src/components/header/header.html"*/'<ion-navbar color="padrao">\n    \n    <div class="logo" *ngIf="mostarLogo">\n        <img src="../../assets/imgs/logoPage.png" (click)="levaNaHome()" width="60" height="40">\n    </div>  \n\n    <ion-searchbar *ngIf="showSearchbar" [(ngModel)]="searchTerm"\n        placeholder="Procurar por titulo ou cantor"\n        (ionInput)="filterItems($event)">\n    </ion-searchbar>\n\n    <ion-buttons class="btnSearch" end>\n        <button ion-button icon-only (click)="toggleSearchbar()" color="branco">\n            <ion-icon name="search"> </ion-icon>\n        </button>\n    </ion-buttons>\n\n</ion-navbar>\n\n<ion-list class="lista" *ngIf="mostrarLista">\n  <ion-item class="items" no-lines *ngFor=" let item of itensFiltrados" color="WhiteGhost" (click)="verItem(item)">\n    <h2>{{item.titulo}}</h2>\n    <p>{{item.cantor}}</p>\n  </ion-item>\n</ion-list>  \n  '/*ion-inline-end:"/home/sam/angular/Cassete/src/components/header/header.html"*/
+        selector: 'header',template:/*ion-inline-start:"/home/sam/angular/Cassete/src/components/header/header.html"*/'<ion-navbar color="padrao">\n    \n    <div class="logo" *ngIf="mostarLogo" (click)="levaNaHome()">\n        <img src="../../assets/imgs/logoPage.png" width="60" height="40">\n    </div>  \n\n    <ion-searchbar *ngIf="showSearchbar" [(ngModel)]="searchTerm"\n        placeholder="Procurar por titulo ou cantor"\n        (ionInput)="filterItems($event)">\n    </ion-searchbar>\n\n    <ion-buttons class="btnSearch" end>\n        <button ion-button icon-only (click)="toggleSearchbar()" color="branco">\n            <ion-icon name="search"> </ion-icon>\n        </button>\n    </ion-buttons>\n\n</ion-navbar>\n\n<ion-list class="lista" *ngIf="mostrarLista">\n  <ion-item class="items" no-lines *ngFor=" let item of itensFiltrados" color="WhiteGhost" (click)="verItem(item)">\n    <h2>{{item.titulo}}</h2>\n    <p>{{item.cantor}}</p>\n  </ion-item>\n</ion-list>  \n  '/*ion-inline-end:"/home/sam/angular/Cassete/src/components/header/header.html"*/
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["e" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["e" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__providers_dados_service_letra_service__["a" /* LetraService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_dados_service_letra_service__["a" /* LetraService */]) === "function" && _b || Object])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["e" /* NavController */],
+        __WEBPACK_IMPORTED_MODULE_3__providers_dados_service_letra_service__["a" /* LetraService */]])
 ], HeaderComponent);
 
-var _a, _b;
 //# sourceMappingURL=header.js.map
 
 /***/ }),
@@ -449,7 +454,7 @@ var _a, _b;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(41);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_dados_service_letra_service__ = __webpack_require__(70);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser__ = __webpack_require__(34);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -494,12 +499,13 @@ var HomePage = (function () {
 }());
 HomePage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-home',template:/*ion-inline-start:"/home/sam/angular/Cassete/src/pages/home/home.html"*/'<ion-header>\n <header> </header>\n</ion-header>\n\n<!-- <resultado-search> \n</resultado-search> -->\n\n<ion-content class="selectable">\n <ion-grid>\n   <ion-row>\n     <ion-col  text-center>\n       <h3>Bem-vindo ao Granda Cassete!</h3>\n         <p class="card-subtitle">O lugar onde a sua procura por\n             letras de musicas Africanas terminam!\n          </p>\n         <div class="hr"> </div>\n     </ion-col>\n   </ion-row>\n\n <h4>Recomendado para si!</h4>\n\n   <ion-row class="centro"wrap>\n     <ion-col col-6 col-sm-6 col-md-3 text-center *ngFor="let dado of dados">\n       <div (click)="verItem(dado)">\n         <img width="130px" height="130px" src="{{dado.img}}">\n         <h6>{{ dado.cantor |capitalizeHtml}}</h6>\n         <p>{{ dado.titulo | capitalizeHtml}}</p>\n       </div>\n     </ion-col>\n   </ion-row>\n\n   <div class="hr"> </div>\n\n   <ion-row class="opcoes">\n     <div ion-col text-center style="cursor:pointer" (click)="abrirPagina()">Enviar letra</div>\n     <!-- <div ion-col text-center>Contactar-nos</div> -->\n     <!-- <div ion-col text-center (click)="abrirSolicitacao()">Ver Solicitacao</div> -->\n     <!-- <div ion-col text-center>Solicitar letra </div> -->\n   </ion-row>\n </ion-grid>\n\n <footer> </footer>\n</ion-content>\n'/*ion-inline-end:"/home/sam/angular/Cassete/src/pages/home/home.html"*/
+        selector: 'page-home',template:/*ion-inline-start:"/home/sam/angular/Cassete/src/pages/home/home.html"*/'<ion-header>\n <header> </header>\n</ion-header>\n\n<!-- <resultado-search> \n</resultado-search> -->\n\n<ion-content class="selectable">\n <ion-grid>\n   <ion-row>\n     <ion-col  text-center>\n       <h3>Bem-vindo ao Granda Cassete!</h3>\n         <p class="card-subtitle">O lugar onde a sua procura por\n             letras de musicas Africanas terminam!\n          </p>\n         <div class="hr"> </div>\n     </ion-col>\n   </ion-row>\n\n <h4>Recomendado para si!</h4>\n\n   <ion-row class="centro"wrap>\n     <ion-col col-6 col-sm-6 col-md-3 text-center *ngFor="let dado of dados">\n       <div (click)="verItem(dado)">\n         <img width="130px" height="130px" src="{{dado.img}}">\n         <h6>{{ dado.cantor |capitalizeHtml| textEdit}}</h6>\n         <p>{{ dado.titulo |capitalizeHtml| textEdit}}</p>\n       </div>\n     </ion-col>\n   </ion-row>\n\n   <div class="hr"> </div>\n\n   <ion-row class="opcoes">\n     <div ion-col text-center style="cursor:pointer" (click)="abrirPagina()">Enviar letra</div>\n     <!-- <div ion-col text-center>Contactar-nos</div> -->\n     <!-- <div ion-col text-center (click)="abrirSolicitacao()">Ver Solicitacao</div> -->\n     <!-- <div ion-col text-center>Solicitar letra </div> -->\n   </ion-row>\n </ion-grid>\n\n <footer> </footer>\n</ion-content>\n'/*ion-inline-end:"/home/sam/angular/Cassete/src/pages/home/home.html"*/
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__providers_dados_service_letra_service__["a" /* LetraService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_dados_service_letra_service__["a" /* LetraService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser__["f" /* Title */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser__["f" /* Title */]) === "function" && _c || Object])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */],
+        __WEBPACK_IMPORTED_MODULE_2__providers_dados_service_letra_service__["a" /* LetraService */],
+        __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser__["f" /* Title */]])
 ], HomePage);
 
-var _a, _b, _c;
 //# sourceMappingURL=home.js.map
 
 /***/ }),
@@ -599,7 +605,7 @@ var LetraService = (function () {
         });
         return this.letras;
     };
-    LetraService.prototype.updateVisita = function (id, data) {
+    LetraService.prototype.updateContador = function (id, data) {
         console.log(id);
         this.afs.doc('letras/' + id).update(data).then(function (result) {
             console.log("update" + result);
@@ -675,12 +681,14 @@ FooterComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__capitalize_html__ = __webpack_require__(705);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__keep_html__ = __webpack_require__(706);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__text_edit_text_edit__ = __webpack_require__(707);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -692,10 +700,12 @@ var PipesModule = (function () {
 PipesModule = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["L" /* NgModule */])({
         declarations: [__WEBPACK_IMPORTED_MODULE_2__keep_html__["a" /* KeepHtmlPipe */],
-            __WEBPACK_IMPORTED_MODULE_0__capitalize_html__["a" /* CapitalizeHtmlPipe */]],
+            __WEBPACK_IMPORTED_MODULE_0__capitalize_html__["a" /* CapitalizeHtmlPipe */],
+            __WEBPACK_IMPORTED_MODULE_3__text_edit_text_edit__["a" /* TextEditPipe */]],
         imports: [],
         exports: [__WEBPACK_IMPORTED_MODULE_2__keep_html__["a" /* KeepHtmlPipe */],
-            __WEBPACK_IMPORTED_MODULE_0__capitalize_html__["a" /* CapitalizeHtmlPipe */]]
+            __WEBPACK_IMPORTED_MODULE_0__capitalize_html__["a" /* CapitalizeHtmlPipe */],
+            __WEBPACK_IMPORTED_MODULE_3__text_edit_text_edit__["a" /* TextEditPipe */]]
     })
 ], PipesModule);
 
@@ -752,7 +762,7 @@ CapitalizeHtmlPipe = __decorate([
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return KeepHtmlPipe; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__(34);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -786,11 +796,54 @@ KeepHtmlPipe = __decorate([
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TextEditPipe; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+/**
+ * Generated class for the TextEditPipe pipe.
+ *
+ * See https://angular.io/api/core/Pipe for more info on Angular Pipes.
+ */
+var TextEditPipe = (function () {
+    function TextEditPipe() {
+    }
+    /**
+     * Takes a value and makes it lowercase.
+     */
+    TextEditPipe.prototype.transform = function (value) {
+        var args = [];
+        for (var _i = 1; _i < arguments.length; _i++) {
+            args[_i - 1] = arguments[_i];
+        }
+        return value.replace(new RegExp('-', 'g'), ' ');
+    };
+    return TextEditPipe;
+}());
+TextEditPipe = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["V" /* Pipe */])({
+        name: 'textEdit',
+    })
+], TextEditPipe);
+
+//# sourceMappingURL=text-edit.js.map
+
+/***/ }),
+
+/***/ 708:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LetraPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(41);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_dados_service_letra_service__ = __webpack_require__(70);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser__ = __webpack_require__(34);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -810,11 +863,10 @@ var LetraPage = (function () {
         this.navParams = navParams;
         this.letraService = letraService;
         this.titleService = titleService;
+        this.letraTab = true;
+        this.traducaoTab = false;
         this.url = document.location.href;
         this.dados = [];
-        var cantor = this.navParams.get('cantor');
-        var titulo = this.navParams.get('titulo');
-        this.titleService.setTitle(cantor + " - " + titulo + " - grandacassete.com");
     }
     LetraPage.prototype.partilhar = function () {
         var cantor = this.navParams.get('cantor');
@@ -823,9 +875,9 @@ var LetraPage = (function () {
         //WEB SHARE API FUNCIONA APENAS APARTIR DA VERSAO 61 DO CHROME PARA ANDROID
         if (navegador.share) {
             navegador.share({
-                'title': 'Granda Cassete',
+                'title': '#GrandaCassete',
                 'text': cantor + " - " + titulo,
-                'url': this.url
+                'url': location.href
             }).then(function () {
                 console.log('Partilhado com sucesso');
             }).catch(function (error) {
@@ -833,12 +885,15 @@ var LetraPage = (function () {
             });
         }
     };
-    LetraPage.prototype.ngOnInit = function () {
-        // this.titleService.setTitle(`${titulo} - ${cantor}`);
-        //document.title = `${titulo} - ${cantor}`
-    };
     LetraPage.prototype.ionViewDidLoad = function () {
         var _this = this;
+        //Mostar Tab de traducao a menos que for mobile
+        if (navigator.userAgent.match(/iPhone|Android/i)) {
+            this.opcaoTraducao = true;
+        }
+        else {
+            this.opcaoTraducao = false;
+        }
         var navegador = window.navigator;
         if (navegador.share) {
             this.btnPartilhar = true;
@@ -858,13 +913,25 @@ var LetraPage = (function () {
         //this.letra = this.navParams.get('letra').letra;
         this.letraService.getByTituloAndCantor(titulo, cantor).subscribe(function (data) {
             _this.dados = data;
+            if (_this.dados[0].traducao) {
+                _this.titleService.setTitle(titulo + " (tradu\u00E7\u00E3o) - " + cantor + " - grandacassete.com");
+            }
+            else {
+                _this.titleService.setTitle(titulo + " - " + cantor + " - grandacassete.com");
+            }
         });
-        this.cantor = this.dados.cantor;
-        this.titulo = this.dados.titulo;
-        this.letra = this.dados.letra;
-        this.id = this.dados.id;
-        this.visita = this.dados.visita;
-        //this._app.setTitle(`${titulo} - ${cantor}`);
+    };
+    LetraPage.prototype.mudarOriginal = function () {
+        this.letraTab = true;
+        this.traducaoTab = false;
+        document.getElementById("tab1").classList.add("OpAtual");
+        document.getElementById("tab2").classList.remove("OpAtual");
+    };
+    LetraPage.prototype.mudartraducao = function () {
+        this.letraTab = false;
+        this.traducaoTab = true;
+        document.getElementById("tab2").classList.add("OpAtual");
+        document.getElementById("tab1").classList.remove("OpAtual");
     };
     LetraPage.prototype.Partilharwhatsapp = function () {
         //const url = document.location.href;
@@ -894,24 +961,26 @@ var LetraPage = (function () {
         var visita = this.navParams.get('visita');
         data.visita = visita + 1;
         console.log(id);
-        this.letraService.updateVisita(id, data);
+        this.letraService.updateContador(id, data);
     };
     return LetraPage;
 }());
 LetraPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-letra',template:/*ion-inline-start:"/home/sam/angular/Cassete/src/pages/letra/letra.html"*/'<ion-header>\n  <header> </header>\n</ion-header>\n  \n<ion-content>\n  <div class="wrapper selectable" *ngFor="let dado of dados">\n    <ion-item >\n      <h4 class="titulo">{{dado.titulo |capitalizeHtml}}</h4>\n      <p class="cantor">{{dado.cantor |capitalizeHtml}}</p>\n\n      <!-- FUNCIONARA APENAS APARTIR DA VERSAO 61 DO CHROME \n        SUPORTE PRA OUTRAS PLATAFORMAS CHEGAAO EM BREVE -->\n      <button *ngIf="btnPartilhar" item-end (click)="partilhar()"color="padrao" outline icon-left ion-button>\n        <ion-icon name="share"></ion-icon>\n        Partilhar\n      </button>\n      \n      <div item-end class="btn-wrapper">\n\n        <button *ngIf="btnWhatsapp" color="whatsapp" ion-button (click)="Partilharwhatsapp()">\n          <ion-icon name="logo-whatsapp"></ion-icon>\n        </button> \n\n        <button *ngIf="btnFacebook" color="facebook" ion-button (click)="PartilharFacebook()">\n          <ion-icon name="logo-facebook"></ion-icon>\n        </button>    \n    \n        <button *ngIf="btnTwitter" color="twitter" ion-button (click)="PartilharTwitter()">\n          <ion-icon name="logo-twitter"></ion-icon>\n        </button>\n\n      </div>\n      \n\n    </ion-item>\n  \n  <!-- Opcao de traducao caso for necessario\n    <ion-grid>\n      <ion-row class="opcoesLetra">\n        <p class="OpAtual">Letra</p>\n        <p class="OpAtual">Tradução</p>\n      </ion-row>\n    </ion-grid>\n  -->\n    <div class="letra" [innerHTML]="dado.letra | keepHtml">\n    \n    </div>\n  </div>\n\n  <!-- <div class="btn-wrapper" style="text-align: center; margin-top: 20px">   \n    <button color="padrao" outline icon-left ion-button>\n      <ion-icon name="md-create"></ion-icon>\n      Corrigir\n    </button>\n  </div> -->\n  <footer> </footer>\n</ion-content>'/*ion-inline-end:"/home/sam/angular/Cassete/src/pages/letra/letra.html"*/,
+        selector: 'page-letra',template:/*ion-inline-start:"/home/sam/angular/Cassete/src/pages/letra/letra.html"*/'<ion-header>\n  <header> </header>\n</ion-header>\n  \n<ion-content>\n  <div class="wrapper selectable" *ngFor="let dado of dados">\n\n    <ion-item >\n\n      <h4 class="titulo">{{dado.titulo | capitalizeHtml | textEdit}}</h4>\n      <p class="cantor">{{dado.cantor | capitalizeHtml | textEdit}}</p>\n\n      <button *ngIf="btnPartilhar" item-end (click)="partilhar()"color="padrao" outline icon-left ion-button>\n        <ion-icon name="share"></ion-icon>\n        Partilhar\n      </button>\n      \n      <div item-end class="btn-wrapper">\n\n        <button *ngIf="btnWhatsapp" color="whatsapp" ion-button (click)="Partilharwhatsapp()">\n          <ion-icon name="logo-whatsapp"></ion-icon>\n        </button> \n\n        <button *ngIf="btnFacebook" color="facebook" ion-button (click)="PartilharFacebook()">\n          <ion-icon name="logo-facebook"></ion-icon>\n        </button>    \n    \n        <button *ngIf="btnTwitter" color="twitter" ion-button (click)="PartilharTwitter()">\n          <ion-icon name="logo-twitter"></ion-icon>\n        </button>\n\n      </div>\n\n    </ion-item>\n  \n    <ion-grid *ngIf="opcaoTraducao && dado.traducao">\n      <ion-row class="opcoesLetra">\n        <p id="tab1" class="OpAtual" (click)="mudarOriginal()">Letra</p>\n        <p id="tab2" (click)="mudartraducao()">Tradução</p>\n      </ion-row>\n    </ion-grid>\n\n    <div *ngIf="letraTab" class="letra" [innerHTML]="dado.letra | keepHtml"> \n\n    </div>\n    \n    <div *ngIf="traducaoTab" class="letra" [innerHTML]="dado.traducao | keepHtml"> </div>\n  </div>\n\n  <!-- <div class="btn-wrapper" style="text-align: center; margin-top: 20px">   \n    <button color="padrao" outline icon-left ion-button>\n      <ion-icon name="md-create"></ion-icon>\n      Corrigir\n    </button>\n  </div> -->\n  <footer> </footer>\n</ion-content>'/*ion-inline-end:"/home/sam/angular/Cassete/src/pages/letra/letra.html"*/,
         providers: [__WEBPACK_IMPORTED_MODULE_3__angular_platform_browser__["f" /* Title */]]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__providers_dados_service_letra_service__["a" /* LetraService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_dados_service_letra_service__["a" /* LetraService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser__["f" /* Title */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser__["f" /* Title */]) === "function" && _d || Object])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */],
+        __WEBPACK_IMPORTED_MODULE_2__providers_dados_service_letra_service__["a" /* LetraService */],
+        __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser__["f" /* Title */]])
 ], LetraPage);
 
-var _a, _b, _c, _d;
 //# sourceMappingURL=letra.js.map
 
 /***/ }),
 
-/***/ 708:
+/***/ 709:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -958,10 +1027,15 @@ var LetraNewPage = (function () {
         this.monstrarMensagem = false;
         this.caixaTraduzir = false;
     }
+    //expressao regurlar para adicionar quebra de linha
     LetraNewPage.prototype.insert_br = function (text) {
         var normalized_Enters = text.replace(/\r|\n/g, "\r\n");
         var text_with_br = normalized_Enters.replace(/\r\n/g, "<br />");
         return text_with_br;
+    };
+    // TypeScript function replace nome e titulo
+    LetraNewPage.prototype.replaceAll = function (input, find, replace) {
+        return input.replace(new RegExp(find, 'g'), replace);
     };
     LetraNewPage.prototype.selecionarOpcao = function (texto) {
         if (texto == 'nao') {
@@ -985,6 +1059,8 @@ var LetraNewPage = (function () {
             this.data.traducao = "";
             this.data.letra = linha;
             this.data.traducao = linhatraducao;
+            this.data.cantor = this.replaceAll(this.data.cantor, ' ', '-');
+            this.data.titulo = this.replaceAll(this.data.titulo, ' ', '-');
             this.solicitacaoService.add(this.data);
             console.log('letra enviada com sucesso');
             this.alertCtrl.create({
@@ -1007,15 +1083,17 @@ LetraNewPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'page-letra-new',template:/*ion-inline-start:"/home/sam/angular/Cassete/src/pages/letra-new/letra-new.html"*/'<ion-header>\n  <header> </header>\n</ion-header>\n  \n<ion-content>\n  <ion-grid class="teste">\n      <h1>Envio de letra</h1>\n      <div class="hr"> </div>\n    <ion-row>\n      <ion-col>\n        <form (ngSubmit)=\'save()\'>\n\n          <ion-item>\n            <ion-label stacked>Seu nome*:</ion-label>\n            <ion-input name="nome" type="text" value="" [(ngModel)]="data.nome" required></ion-input>\n          </ion-item>\n\n          <div *ngIf="monstrarMensagem" class="mensagem">\n            <span>Campo obrigatório</span>\n          </div>\n\n          <ion-item>\n            <ion-label stacked>Cantor/Grupo*:</ion-label>\n            <ion-input name="cantor" type="text" value="" [(ngModel)]="data.cantor" required></ion-input>\n          </ion-item>\n          \n          <div *ngIf="monstrarMensagem" class="mensagem">\n            <span>Campo obrigatório</span>\n          </div>\n\n          <ion-item>\n            <ion-label stacked>Título da musica*:</ion-label>\n            <ion-input name="titulo" type="text" value="" [(ngModel)]="data.titulo" required></ion-input>\n          </ion-item>\n          \n          <div *ngIf="monstrarMensagem" class="mensagem">\n            <span>Campo obrigatório</span>\n          </div>\n          \n          <ion-item>\n            <ion-label stacked>Link video clipe:</ion-label>\n            <ion-input name="video" type="text" value="" [(ngModel)]="data.video" ></ion-input>\n          </ion-item>\n          \n          <ion-item>\n            <ion-label stacked>Letra*:</ion-label>\n            <ion-textarea placeholder="Escreva a letra aqui..."\n            style="width:100%; padding: 10px; margin-top: 3px;"\n            cols="30" rows="20" name="letra" \n            [(ngModel)] ="data.letra" required></ion-textarea>\n          </ion-item>\n          \n          <div *ngIf="monstrarMensagem" class="mensagem">\n            <span>Campo obrigatório</span>\n          </div>\n\n          <ion-item class="caixaOpcional">\n            <label>Traduzir para Português:</label><br>\n            <input type="radio" (click)="selecionarOpcao(\'nao\')" class="radio" checked name="opcao"> Não\n            <input type="radio" (click)="selecionarOpcao(\'sim\')" class="radio" name="opcao"> Sim<br>\n          </ion-item> \n\n          <ion-item *ngIf="caixaTraduzir">\n            <ion-label stacked>Tradução:</ion-label>\n            <ion-textarea placeholder="Escreva a tradução da letra aqui..."\n            style="width:100%; padding: 10px; margin-top: 3px;"\n            cols="30" rows="20" name="traducao" \n            [(ngModel)] ="data.traducao"></ion-textarea>\n          </ion-item>\n\n          <div class="mensagem">\n            <button ion-button type="submit" color="padrao" outline>\n              Enviar\n            </button>\n          </div>\n\n        </form>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n\n  <footer> </footer>\n</ion-content>\n'/*ion-inline-end:"/home/sam/angular/Cassete/src/pages/letra-new/letra-new.html"*/,
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__providers_dados_service_solicitacao_service__["a" /* SolicitacaoService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_dados_service_solicitacao_service__["a" /* SolicitacaoService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]) === "function" && _d || Object])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */],
+        __WEBPACK_IMPORTED_MODULE_3__providers_dados_service_solicitacao_service__["a" /* SolicitacaoService */],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]])
 ], LetraNewPage);
 
-var _a, _b, _c, _d;
 //# sourceMappingURL=letra-new.js.map
 
 /***/ }),
 
-/***/ 709:
+/***/ 710:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1072,7 +1150,7 @@ SolicitacaoPage = __decorate([
 
 /***/ }),
 
-/***/ 710:
+/***/ 711:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1157,10 +1235,12 @@ SolicitacaoEditPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'page-solicitacao-edit',template:/*ion-inline-start:"/home/sam/angular/Cassete/src/pages/solicitacao-edit/solicitacao-edit.html"*/'<ion-header>\n <header> </header>\n</ion-header>\n\n<ion-content>\n   <ion-card>\n\n       <ion-card-content padding>\n         <form (ngSubmit)=\'save()\'>\n\n           <ion-item>\n               <ion-label style="font-size:25px;color:black;" stacked>Letra</ion-label>\n               <ion-textarea    [froalaEditor]=\'options\'\n               [(froalaModel)]="data.letra"></ion-textarea>\n           </ion-item>\n\n           <ion-item>\n              <ion-label style="font-size:25px;color:black;" stacked>Tradução</ion-label>\n              <ion-textarea    [froalaEditor]=\'options\'\n              [(froalaModel)]="data.traducao"></ion-textarea>\n          </ion-item>\n\n            {{data.id}}\n           <button ion-button type="submit" color="padrao" outline block>\n             Enviar\n           </button>\n\n         </form>\n\n       </ion-card-content>\n   </ion-card>\n <footer> </footer>\n</ion-content>\n'/*ion-inline-end:"/home/sam/angular/Cassete/src/pages/solicitacao-edit/solicitacao-edit.html"*/,
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__providers_dados_service_letra_service__["a" /* LetraService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_dados_service_letra_service__["a" /* LetraService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular_components_alert_alert_controller__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular_components_alert_alert_controller__["a" /* AlertController */]) === "function" && _d || Object])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */],
+        __WEBPACK_IMPORTED_MODULE_2__providers_dados_service_letra_service__["a" /* LetraService */],
+        __WEBPACK_IMPORTED_MODULE_3_ionic_angular_components_alert_alert_controller__["a" /* AlertController */]])
 ], SolicitacaoEditPage);
 
-var _a, _b, _c, _d;
 //# sourceMappingURL=solicitacao-edit.js.map
 
 /***/ })

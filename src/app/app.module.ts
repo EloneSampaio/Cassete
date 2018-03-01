@@ -27,6 +27,9 @@ import { LetraNewPage } from '../pages/letra-new/letra-new';
 import { SolicitacaoPage } from '../pages/solicitacao/solicitacao';
 import { SolicitacaoEditPage } from '../pages/solicitacao-edit/solicitacao-edit';
 
+import { APP_BASE_HREF } from '@angular/common';
+
+
 export const firebaseConfig = {
   apiKey: "AIzaSyByNio_2PUb4FuoZpmnkh88zj7w_cKyoQc",
   authDomain: "grandacassete-4ffe1.firebaseapp.com",
@@ -52,7 +55,7 @@ export const firebaseConfig = {
     IonicModule.forRoot(MyApp,{
       mode: 'md', // 'md' | 'ios' | 'wp' //md em todas plataformas
       //preloadModules: true,
-      //locationStrategy: 'path'
+      locationStrategy: 'path'
     },{
       links: [
         { component: HomePage, name: 'HomePage', segment: '' },
@@ -79,6 +82,7 @@ export const firebaseConfig = {
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},
+    {provide: APP_BASE_HREF, useValue : '/' },
     LetraService,
     SolicitacaoService,
     InAppBrowser,

@@ -40,6 +40,7 @@ export class LetraNewPage {
               private alertCtrl: AlertController) {
   }
 
+//expressao regurlar para adicionar quebra de linha
    insert_br(text)
   {
     var normalized_Enters = text.replace(/\r|\n/g, "\r\n");
@@ -47,6 +48,12 @@ export class LetraNewPage {
     return text_with_br;
   
   }
+
+// TypeScript function replace nome e titulo
+public replaceAll(input: string, find: string, replace: string): string {
+   return input.replace(new RegExp(find, 'g'), replace);
+}
+
 
   selecionarOpcao(texto){
     if(texto == 'nao'){
@@ -71,7 +78,10 @@ export class LetraNewPage {
     this.data.traducao = "";
 
     this.data.letra = linha;
-    this.data.traducao = linhatraducao 
+    this.data.traducao = linhatraducao ;
+    this.data.cantor=this.replaceAll(this.data.cantor, ' ', '-');
+    this.data.titulo=this.replaceAll(this.data.titulo, ' ', '-')
+
      
       this.solicitacaoService.add(this.data); 
       console.log('letra enviada com sucesso');

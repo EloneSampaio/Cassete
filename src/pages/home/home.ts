@@ -30,6 +30,7 @@ export class HomePage {
    this.navCtrl.setRoot("SolicitacaoPage");
  }
 
+
  verItem(dado){
   this.navCtrl.setRoot("LetraPage",{
     cantor: dado.cantor,

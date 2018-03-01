@@ -61,8 +61,9 @@ export class SolicitacaoEditPage {
 
  }
 
- save(){
 
+ save(){
+   
    this.data.letra.replace(" ", "<br/>");
    this.data.traducao.replace(" ", "<br/>");
    this.letraService.add(this.data);

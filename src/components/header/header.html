@@ -1,7 +1,7 @@
 <ion-navbar color="padrao">
     
-    <div class="logo" *ngIf="mostarLogo">
-        <img src="../../assets/imgs/logoPage.png" (click)="levaNaHome()" width="60" height="40">
+    <div class="logo" *ngIf="mostarLogo" (click)="levaNaHome()">
+        <img src="../../assets/imgs/logoPage.png" width="60" height="40">
     </div>  
 
     <ion-searchbar *ngIf="showSearchbar" [(ngModel)]="searchTerm"
