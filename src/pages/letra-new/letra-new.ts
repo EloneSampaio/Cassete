@@ -79,8 +79,8 @@ public replaceAll(input: string, find: string, replace: string): string {
 
     this.data.letra = linha;
     this.data.traducao = linhatraducao ;
-    this.data.cantor=this.replaceAll(this.data.cantor, ' ', '-');
-    this.data.titulo=this.replaceAll(this.data.titulo, ' ', '-')
+    // this.data.cantor=this.replaceAll(this.data.cantor, ' ', '-');
+    // this.data.titulo=this.replaceAll(this.data.titulo, ' ', '-')
 
      
       this.solicitacaoService.add(this.data); 

@@ -8,17 +8,17 @@ import { SolicitacaoService } from '../dados-service/solicitacao-service';
 
 export class LetraService {
 
-  letraCollection:AngularFirestoreCollection<LetraI>;
-  letraCollectionSearch:AngularFirestoreCollection<LetraI>;
+  letraCollection:AngularFirestoreCollection<any>;
+  letraCollectionSearch:AngularFirestoreCollection<any>;
 
-  letras: Observable<LetraI[]>;
+  letras: Observable<any[]>;
   
   
   constructor(private afs: AngularFirestore, 
               private solicitacaoService: SolicitacaoService) {
 
-    this.letraCollection=afs.collection<LetraI>('letras',ref=> ref.limit(12).orderBy('visita','desc'));
-    this.letraCollectionSearch=afs.collection<LetraI>('letras',ref=> ref.limit(5000));
+    this.letraCollection=afs.collection<any>('letras',ref=> ref.limit(12).orderBy('visita','desc'));
+    this.letraCollectionSearch=afs.collection<any>('letras',ref=> ref.limit(5000));
    }
 
 
@@ -26,7 +26,7 @@ export class LetraService {
     this.letras=this.letraCollection.snapshotChanges().map( actions => {
 
      return actions.map(action => {
-       const data = action.payload.doc.data() as LetraI;
+       const data = action.payload.doc.data() as any;
        const id = action.payload.doc.id;
        return { id, ...data };
      })
@@ -55,7 +55,7 @@ export class LetraService {
   }
 
    getBy(id){
-    return this.afs.collection<LetraI>('letras/'+id).valueChanges();
+    return this.afs.collection<any>('letras/'+id).valueChanges();
     }
 
     getByTituloAndCantor(titulo,cantor){
@@ -64,7 +64,7 @@ export class LetraService {
       .where('cantor', '==',cantor)).snapshotChanges().map(actions => {
 
         return actions.map(action => {
-          const data = action.payload.doc.data() as LetraI;
+          const data = action.payload.doc.data() as any;
           const id = action.payload.doc.id;
           return { id, ...data };
   
@@ -89,7 +89,7 @@ export class LetraService {
     this.letras=this.letraCollectionSearch.snapshotChanges().map( actions => {
       
            return actions.map(action => {
-             const data = action.payload.doc.data() as LetraI;
+             const data = action.payload.doc.data() as any;
              const id = action.payload.doc.id;
              return { id, ...data };
            })

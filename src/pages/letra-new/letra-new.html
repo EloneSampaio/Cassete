@@ -11,7 +11,7 @@
         <form (ngSubmit)='save()'>
 
           <ion-item>
-            <ion-label stacked>Seu nome*:</ion-label>
+            <ion-label stacked>Seu nome*</ion-label>
             <ion-input name="nome" type="text" value="" [(ngModel)]="data.nome" required></ion-input>
           </ion-item>
 
@@ -20,7 +20,7 @@
           </div>
 
           <ion-item>
-            <ion-label stacked>Cantor/Grupo*:</ion-label>
+            <ion-label stacked>Cantor/Grupo*</ion-label>
             <ion-input name="cantor" type="text" value="" [(ngModel)]="data.cantor" required></ion-input>
           </ion-item>
           
@@ -29,7 +29,7 @@
           </div>
 
           <ion-item>
-            <ion-label stacked>Título da musica*:</ion-label>
+            <ion-label stacked>Título da musica*</ion-label>
             <ion-input name="titulo" type="text" value="" [(ngModel)]="data.titulo" required></ion-input>
           </ion-item>
           
@@ -38,12 +38,12 @@
           </div>
           
           <ion-item>
-            <ion-label stacked>Link video clipe:</ion-label>
+            <ion-label stacked>Link video clipe</ion-label>
             <ion-input name="video" type="text" value="" [(ngModel)]="data.video" ></ion-input>
           </ion-item>
           
           <ion-item>
-            <ion-label stacked>Letra*:</ion-label>
+            <ion-label stacked>Letra*</ion-label>
             <ion-textarea placeholder="Escreva a letra aqui..."
             style="width:100%; padding: 10px; margin-top: 3px;"
             cols="30" rows="20" name="letra" 
@@ -55,13 +55,13 @@
           </div>
 
           <ion-item class="caixaOpcional">
-            <label>Traduzir para Português:</label><br>
+            <label>Traduzir para Português</label><br>
             <input type="radio" (click)="selecionarOpcao('nao')" class="radio" checked name="opcao"> Não
             <input type="radio" (click)="selecionarOpcao('sim')" class="radio" name="opcao"> Sim<br>
           </ion-item> 
 
           <ion-item *ngIf="caixaTraduzir">
-            <ion-label stacked>Tradução:</ion-label>
+            <ion-label stacked>Tradução</ion-label>
             <ion-textarea placeholder="Escreva a tradução da letra aqui..."
             style="width:100%; padding: 10px; margin-top: 3px;"
             cols="30" rows="20" name="traducao" 

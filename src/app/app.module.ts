@@ -59,7 +59,7 @@ export const firebaseConfig = {
     },{
       links: [
         { component: HomePage, name: 'HomePage', segment: '' },
-        { component: LetraPage, name: 'LetraPage', segment: ':cantor/:titulo' },
+        { component: LetraPage, name: 'LetraPage', segment: ':cantorLink/:tituloLink' },
         { component: LetraNewPage, name: 'LetraNewPage', segment: 'enviar-letra' },
         { component: SolicitacaoEditPage, name: 'SolicitacaoEditPage', segment: 'editar-letra' },
         { component: SolicitacaoPage, name: 'SolicitacaoPage', segment: 'solicitacao' },

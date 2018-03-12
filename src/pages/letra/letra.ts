@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { LetraService } from '../../providers/dados-service/letra-service';
-import { Title } from '@angular/platform-browser';
-
+import { Title, Meta } from '@angular/platform-browser';
 
 @IonicPage({
   name: 'LetraPage',
-  segment: ':cantor/:titulo',
+  segment: ':cantorLink/:tituloLink',
   defaultHistory: ['HomePage'],
   priority: 'high'
 })
@@ -34,7 +33,8 @@ export class LetraPage{
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
               public letraService: LetraService,
-              private titleService: Title) { }
+              private titleService: Title,
+              private meta: Meta) { }
 
   
   partilhar(){
@@ -82,14 +82,21 @@ export class LetraPage{
 
     const cantor = this.navParams.get('cantor');
     const titulo = this.navParams.get('titulo');
-    //this.imagem = this.navParams.get('imagem').img;
-    //this.letra = this.navParams.get('letra').letra;
+
     this.letraService.getByTituloAndCantor(titulo,cantor).subscribe((data) => {
       this.dados = data;
       if(this.dados[0].traducao){
+        
         this.titleService.setTitle(`${titulo} (tradução) - ${cantor} - grandacassete.com`);
+        this.meta.addTag({ name: 'title', content: `${titulo} (tradução) - ${cantor} - grandacassete.com` });
+
+        //this.meta.updateTag({ name: 'description', content:''});
+        this.meta.updateTag({ name: 'keywords', content:`${titulo}, ${titulo} ${cantor}, ${titulo} tradução, ${titulo} letra,  ${cantor} letra, letras de músicas, letras `});
+
       } else{
         this.titleService.setTitle(`${titulo} - ${cantor} - grandacassete.com`);
+        this.meta.addTag({ name: 'title', content: `${titulo} - ${cantor} - grandacassete.com` });
+        this.meta.updateTag({ name: 'keywords', content:`${titulo}, ${titulo} ${cantor}, ${titulo} letra,  ${cantor} letra, letras de músicas, letras `});
       }
     });
   }
@@ -105,17 +112,18 @@ export class LetraPage{
   mudartraducao(){
     this.letraTab = false;
     this.traducaoTab = true;
-    
+
     document.getElementById("tab2").classList.add("OpAtual");
     document.getElementById("tab1").classList.remove("OpAtual");
   }
 
   Partilharwhatsapp(){
-    //const url = document.location.href;
+    const url = location.href;
     const cantor = this.navParams.get('cantor');
     const titulo = this.navParams.get('titulo');
-
-    document.location.href = 'whatsapp://send?text='+cantor +' - '+titulo + encodeURIComponent(location.href)
+    
+    //document.location.href = `whatsapp://send?text='+${cantor} - ${titulo} ${url}`
+    document.location.href = 'whatsapp://send?text='+cantor +' - '+titulo +' '+ url
   }
 
   PartilharFacebook(){
@@ -134,24 +142,24 @@ export class LetraPage{
   }
 
   verItem(dado){
-      this.navCtrl.setRoot("LetraPage",{
-          cantor: dado.cantor,
-          titulo: dado.titulo,
-          letra: dado.letra
-      });
+    this.navCtrl.setRoot("LetraPage",{
+      cantor: dado.cantor,
+      titulo: dado.titulo,
+      letra: dado.letra
+    });
   }
 
   ionViewWillLeave(){
-var data={
-  visita: 0
-};
-   
+    var data={
+      visita: 0
+    };
+       
     var id=this.navParams.get('id');
     var  visita=this.navParams.get('visita');
-    data.visita= visita+1;
+    data.visita = visita + 1;
     console.log(id);
-    this.letraService.updateContador(id,data);
-
+    this.letraService.updateContador(id, data);
+    
   }
 
 }

@@ -65,7 +65,6 @@ export class HeaderComponent {
     
     const q = this.searchTerm;
     //const q = searchbar.target.value;
-
     //Nao filtrar a array caso o valor for vazio
     if(q.trim() == '') {
       this.itensFiltrados = null
