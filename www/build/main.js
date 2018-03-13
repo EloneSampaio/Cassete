@@ -141,7 +141,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(34);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(364);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_in_app_browser__ = __webpack_require__(274);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_deeplinks__ = __webpack_require__(371);
@@ -161,13 +161,15 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_letra_new_letra_new__ = __webpack_require__(709);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__pages_solicitacao_solicitacao__ = __webpack_require__(710);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__pages_solicitacao_edit_solicitacao_edit__ = __webpack_require__(711);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__angular_common__ = __webpack_require__(63);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__pages_error_error__ = __webpack_require__(712);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__angular_common__ = __webpack_require__(63);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -211,7 +213,8 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_17__pages_letra_letra__["a" /* LetraPage */],
             __WEBPACK_IMPORTED_MODULE_18__pages_letra_new_letra_new__["a" /* LetraNewPage */],
             __WEBPACK_IMPORTED_MODULE_19__pages_solicitacao_solicitacao__["a" /* SolicitacaoPage */],
-            __WEBPACK_IMPORTED_MODULE_20__pages_solicitacao_edit_solicitacao_edit__["a" /* SolicitacaoEditPage */]
+            __WEBPACK_IMPORTED_MODULE_20__pages_solicitacao_edit_solicitacao_edit__["a" /* SolicitacaoEditPage */],
+            __WEBPACK_IMPORTED_MODULE_21__pages_error_error__["a" /* ErrorPage */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -219,15 +222,14 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_12__components_components_module__["a" /* ComponentsModule */],
             __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["d" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_9__app_component__["a" /* MyApp */], {
                 mode: 'md',
-                //preloadModules: true,
-                locationStrategy: 'path'
             }, {
                 links: [
                     { component: __WEBPACK_IMPORTED_MODULE_16__pages_home_home__["a" /* HomePage */], name: 'HomePage', segment: '' },
-                    { component: __WEBPACK_IMPORTED_MODULE_17__pages_letra_letra__["a" /* LetraPage */], name: 'LetraPage', segment: ':cantorLink/:tituloLink' },
+                    { component: __WEBPACK_IMPORTED_MODULE_17__pages_letra_letra__["a" /* LetraPage */], name: 'LetraPage', segment: ':cantor/:titulo' },
                     { component: __WEBPACK_IMPORTED_MODULE_18__pages_letra_new_letra_new__["a" /* LetraNewPage */], name: 'LetraNewPage', segment: 'enviar-letra' },
                     { component: __WEBPACK_IMPORTED_MODULE_20__pages_solicitacao_edit_solicitacao_edit__["a" /* SolicitacaoEditPage */], name: 'SolicitacaoEditPage', segment: 'editar-letra' },
                     { component: __WEBPACK_IMPORTED_MODULE_19__pages_solicitacao_solicitacao__["a" /* SolicitacaoPage */], name: 'SolicitacaoPage', segment: 'solicitacao' },
+                    { component: __WEBPACK_IMPORTED_MODULE_21__pages_error_error__["a" /* ErrorPage */], name: 'ErrorPage', segment: 'error' },
                 ]
             }),
             __WEBPACK_IMPORTED_MODULE_11_angularfire2__["a" /* AngularFireModule */].initializeApp(firebaseConfig),
@@ -243,11 +245,12 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_17__pages_letra_letra__["a" /* LetraPage */],
             __WEBPACK_IMPORTED_MODULE_18__pages_letra_new_letra_new__["a" /* LetraNewPage */],
             __WEBPACK_IMPORTED_MODULE_19__pages_solicitacao_solicitacao__["a" /* SolicitacaoPage */],
-            __WEBPACK_IMPORTED_MODULE_20__pages_solicitacao_edit_solicitacao_edit__["a" /* SolicitacaoEditPage */]
+            __WEBPACK_IMPORTED_MODULE_20__pages_solicitacao_edit_solicitacao_edit__["a" /* SolicitacaoEditPage */],
+            __WEBPACK_IMPORTED_MODULE_21__pages_error_error__["a" /* ErrorPage */]
         ],
         providers: [
             { provide: __WEBPACK_IMPORTED_MODULE_1__angular_core__["v" /* ErrorHandler */], useClass: __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["c" /* IonicErrorHandler */] },
-            { provide: __WEBPACK_IMPORTED_MODULE_21__angular_common__["a" /* APP_BASE_HREF */], useValue: '/' },
+            { provide: __WEBPACK_IMPORTED_MODULE_22__angular_common__["a" /* APP_BASE_HREF */], useValue: '/' },
             __WEBPACK_IMPORTED_MODULE_13__providers_dados_service_letra_service__["a" /* LetraService */],
             __WEBPACK_IMPORTED_MODULE_14__providers_dados_service_solicitacao_service__["a" /* SolicitacaoService */],
             __WEBPACK_IMPORTED_MODULE_4__ionic_native_in_app_browser__["a" /* InAppBrowser */],
@@ -268,7 +271,7 @@ AppModule = __decorate([
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyApp; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__pages_home_home__ = __webpack_require__(70);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -306,7 +309,7 @@ MyApp = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__header_header__ = __webpack_require__(447);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__footer_footer__ = __webpack_require__(703);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(35);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -342,7 +345,7 @@ ComponentsModule = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_Subject__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_Subject___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_rxjs_Subject__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_dados_service_letra_service__ = __webpack_require__(71);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_Rx__ = __webpack_require__(448);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_Rx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_Rx__);
@@ -425,11 +428,14 @@ var HeaderComponent = (function () {
             return false;
         });
     };
+    // TypeScript function replace nome e titulo
+    HeaderComponent.prototype.replaceAll = function (input, find, replace) {
+        return input.replace(new RegExp(find, 'g'), replace);
+    };
     HeaderComponent.prototype.verItem = function (dado) {
         this._navCtrl.setRoot("LetraPage", {
-            cantor: dado.cantor,
-            titulo: dado.titulo,
-            letra: dado.letra
+            cantor: this.replaceAll(dado.cantor, ' ', '-').toLowerCase(),
+            titulo: this.replaceAll(dado.titulo, ' ', '-').toLowerCase()
         });
     };
     return HeaderComponent;
@@ -438,10 +444,10 @@ HeaderComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["n" /* Component */])({
         selector: 'header',template:/*ion-inline-start:"/home/sam/angular/Cassete/src/components/header/header.html"*/'<ion-navbar color="padrao">\n    \n    <div class="logo" *ngIf="mostarLogo" (click)="levaNaHome()">\n        <img src="../../assets/imgs/logoPage.png" width="60" height="40">\n    </div>  \n\n    <ion-searchbar *ngIf="showSearchbar" [(ngModel)]="searchTerm"\n        placeholder="Procurar por titulo ou cantor"\n        (ionInput)="filterItems($event)">\n    </ion-searchbar>\n\n    <ion-buttons class="btnSearch" end>\n        <button ion-button icon-only (click)="toggleSearchbar()" color="branco">\n            <ion-icon name="search"> </ion-icon>\n        </button>\n    </ion-buttons>\n\n</ion-navbar>\n\n<ion-list class="lista" *ngIf="mostrarLista">\n  <ion-item class="items" no-lines *ngFor=" let item of itensFiltrados" color="WhiteGhost" (click)="verItem(item)">\n    <h2>{{item.titulo}}</h2>\n    <p>{{item.cantor}}</p>\n  </ion-item>\n</ion-list>\n  '/*ion-inline-end:"/home/sam/angular/Cassete/src/components/header/header.html"*/
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["e" /* NavController */],
-        __WEBPACK_IMPORTED_MODULE_3__providers_dados_service_letra_service__["a" /* LetraService */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["e" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["e" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__providers_dados_service_letra_service__["a" /* LetraService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_dados_service_letra_service__["a" /* LetraService */]) === "function" && _b || Object])
 ], HeaderComponent);
 
+var _a, _b;
 //# sourceMappingURL=header.js.map
 
 /***/ }),
@@ -452,7 +458,7 @@ HeaderComponent = __decorate([
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_dados_service_letra_service__ = __webpack_require__(71);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser__ = __webpack_require__(34);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -483,6 +489,8 @@ var HomePage = (function () {
         this.meta.updateTag({ name: 'description', content: 'O maior site de letra de musicas africanas oferece letras e traducoes' });
     }
     HomePage.prototype.ionViewDidLoad = function () {
+        //this.titleService.setTitle();
+        this.titleService.setTitle('');
         this.titleService.setTitle("Granda Cassete - A maior plataforma de letras de musicas Africanas");
     };
     // TypeScript function replace nome e titulo
@@ -497,13 +505,11 @@ var HomePage = (function () {
     };
     HomePage.prototype.verItem = function (dado) {
         this.navCtrl.setRoot("LetraPage", {
-            cantor: dado.cantor,
-            titulo: dado.titulo,
             letra: dado.letra,
             id: dado.id,
             visita: dado.visita,
-            cantorLink: this.replaceAll(dado.cantor, ' ', '-').toLowerCase(),
-            tituloLink: this.replaceAll(dado.titulo, ' ', '-').toLowerCase(),
+            cantor: this.replaceAll(dado.cantor, ' ', '-').toLowerCase(),
+            titulo: this.replaceAll(dado.titulo, ' ', '-').toLowerCase()
         });
     };
     return HomePage;
@@ -736,7 +742,7 @@ TextEditPipe = __decorate([
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LetraPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_dados_service_letra_service__ = __webpack_require__(71);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser__ = __webpack_require__(34);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -807,16 +813,23 @@ var LetraPage = (function () {
         var titulo = this.navParams.get('titulo');
         this.letraService.getByTituloAndCantor(titulo, cantor).subscribe(function (data) {
             _this.dados = data;
-            if (_this.dados[0].traducao) {
-                _this.titleService.setTitle(titulo + " (tradu\u00E7\u00E3o) - " + cantor + " - grandacassete.com");
-                _this.meta.addTag({ name: 'title', content: titulo + " (tradu\u00E7\u00E3o) - " + cantor + " - grandacassete.com" });
-                //this.meta.updateTag({ name: 'description', content:''});
-                _this.meta.updateTag({ name: 'keywords', content: titulo + ", " + titulo + " " + cantor + ", " + titulo + " tradu\u00E7\u00E3o, " + titulo + " letra,  " + cantor + " letra, letras de m\u00FAsicas, letras " });
+            console.log(data);
+            if (data != "") {
+                if (_this.dados[0].traducao) {
+                    _this.titleService.setTitle('');
+                    _this.titleService.setTitle(titulo + " (tradu\u00E7\u00E3o) - " + cantor + " - grandacassete.com");
+                    _this.meta.addTag({ name: 'title', content: titulo + " (tradu\u00E7\u00E3o) - " + cantor + " - grandacassete.com" });
+                    //this.meta.updateTag({ name: 'description', content:''});
+                    _this.meta.updateTag({ name: 'keywords', content: titulo + ", " + titulo + " " + cantor + ", " + titulo + " tradu\u00E7\u00E3o, " + titulo + " letra,  " + cantor + " letra, letras de m\u00FAsicas, letras " });
+                }
+                else {
+                    _this.titleService.setTitle(titulo + " - " + cantor + " - grandacassete.com");
+                    _this.meta.addTag({ name: 'title', content: titulo + " - " + cantor + " - grandacassete.com" });
+                    _this.meta.updateTag({ name: 'keywords', content: titulo + ", " + titulo + " " + cantor + ", " + titulo + " letra,  " + cantor + " letra, letras de m\u00FAsicas, letras " });
+                }
             }
             else {
-                _this.titleService.setTitle(titulo + " - " + cantor + " - grandacassete.com");
-                _this.meta.addTag({ name: 'title', content: titulo + " - " + cantor + " - grandacassete.com" });
-                _this.meta.updateTag({ name: 'keywords', content: titulo + ", " + titulo + " " + cantor + ", " + titulo + " letra,  " + cantor + " letra, letras de m\u00FAsicas, letras " });
+                _this.navCtrl.setRoot("ErrorPage");
             }
         });
     };
@@ -884,7 +897,7 @@ var _a, _b, _c, _d, _e;
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LetraNewPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__home_home__ = __webpack_require__(70);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_dados_service_solicitacao_service__ = __webpack_require__(105);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -1060,8 +1073,8 @@ var LetraService = (function () {
     };
     LetraService.prototype.getByTituloAndCantor = function (titulo, cantor) {
         return this.afs.collection('letras', function (ref) {
-            return ref.where('titulo', '==', titulo)
-                .where('cantor', '==', cantor);
+            return ref.where('tituloPesquisa', '==', titulo)
+                .where('cantorPesquisa', '==', cantor);
         }).snapshotChanges().map(function (actions) {
             return actions.map(function (action) {
                 var data = action.payload.doc.data();
@@ -1112,7 +1125,7 @@ LetraService = __decorate([
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SolicitacaoPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_dados_service_solicitacao_service__ = __webpack_require__(105);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1169,7 +1182,7 @@ SolicitacaoPage = __decorate([
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SolicitacaoEditPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_dados_service_letra_service__ = __webpack_require__(71);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular_components_alert_alert_controller__ = __webpack_require__(118);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__home_home__ = __webpack_require__(70);
@@ -1255,6 +1268,51 @@ SolicitacaoEditPage = __decorate([
 ], SolicitacaoEditPage);
 
 //# sourceMappingURL=solicitacao-edit.js.map
+
+/***/ }),
+
+/***/ 712:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ErrorPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(35);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+/**
+ * Generated class for the ErrorPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var ErrorPage = (function () {
+    function ErrorPage(navCtrl, navParams) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+    }
+    ErrorPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad ErrorPage');
+    };
+    return ErrorPage;
+}());
+ErrorPage = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        selector: 'page-error',template:/*ion-inline-start:"/home/sam/angular/Cassete/src/pages/error/error.html"*/'<ion-header>\n  <header> </header>\n </ion-header>\n \n <ion-content class="selectable">\n  <ion-grid>\n    <ion-row>\n      <ion-col  text-center>\n        <h3>Bem-vindo ao Granda Cassete!</h3>\n          <p class="card-subtitle">O lugar onde a sua procura por\n              letras de musicas Africanas terminam!\n           </p>\n          <div class="hr"> </div>\n      </ion-col>\n    </ion-row>\n \n  <h4>Recomendado para si!</h4>\n \n    <ion-row class="centro"wrap>\n       Página não encontrada.\n    </ion-row>\n \n    <div class="hr"> </div>\n \n    <ion-row class="opcoes">\n      <div ion-col text-center style="cursor:pointer" (click)="abrirPagina()">Enviar letra</div>\n      <!-- <div ion-col text-center>Contactar-nos</div> -->\n      <!-- <div ion-col text-center (click)="abrirSolicitacao()">Ver Solicitacao</div> -->\n      <!-- <div ion-col text-center>Solicitar letra </div> -->\n    </ion-row>\n  </ion-grid>\n \n  <footer> </footer>\n </ion-content>'/*ion-inline-end:"/home/sam/angular/Cassete/src/pages/error/error.html"*/,
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */]])
+], ErrorPage);
+
+//# sourceMappingURL=error.js.map
 
 /***/ })
 

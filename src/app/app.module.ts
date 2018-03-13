@@ -26,6 +26,7 @@ import { LetraPage } from '../pages/letra/letra';
 import { LetraNewPage } from '../pages/letra-new/letra-new';
 import { SolicitacaoPage } from '../pages/solicitacao/solicitacao';
 import { SolicitacaoEditPage } from '../pages/solicitacao-edit/solicitacao-edit';
+import { ErrorPage } from '../pages/error/error';
 
 import { APP_BASE_HREF } from '@angular/common';
 
@@ -46,7 +47,8 @@ export const firebaseConfig = {
     LetraPage, 
     LetraNewPage, 
     SolicitacaoPage, 
-    SolicitacaoEditPage 
+    SolicitacaoEditPage,
+    ErrorPage 
   ],
   imports: [
     BrowserModule,
@@ -55,14 +57,15 @@ export const firebaseConfig = {
     IonicModule.forRoot(MyApp,{
       mode: 'md', // 'md' | 'ios' | 'wp' //md em todas plataformas
       //preloadModules: true,
-      locationStrategy: 'path'
+      //locationStrategy: 'path'
     },{
       links: [
         { component: HomePage, name: 'HomePage', segment: '' },
-        { component: LetraPage, name: 'LetraPage', segment: ':cantorLink/:tituloLink' },
+        { component: LetraPage, name: 'LetraPage', segment: ':cantor/:titulo' },
         { component: LetraNewPage, name: 'LetraNewPage', segment: 'enviar-letra' },
         { component: SolicitacaoEditPage, name: 'SolicitacaoEditPage', segment: 'editar-letra' },
         { component: SolicitacaoPage, name: 'SolicitacaoPage', segment: 'solicitacao' },
+        { component: ErrorPage, name: 'ErrorPage', segment: 'error' },
       ]
     }),
     AngularFireModule.initializeApp(firebaseConfig),
@@ -78,7 +81,8 @@ export const firebaseConfig = {
     LetraPage, 
     LetraNewPage, 
     SolicitacaoPage, 
-    SolicitacaoEditPage 
+    SolicitacaoEditPage ,
+    ErrorPage
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},

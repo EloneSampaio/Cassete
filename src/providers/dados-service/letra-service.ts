@@ -60,8 +60,8 @@ export class LetraService {
 
     getByTituloAndCantor(titulo,cantor){
       return this.afs.collection('letras', ref => 
-      ref.where('titulo', '==',titulo )
-      .where('cantor', '==',cantor)).snapshotChanges().map(actions => {
+      ref.where('tituloPesquisa', '==',titulo )
+      .where('cantorPesquisa', '==',cantor)).snapshotChanges().map(actions => {
 
         return actions.map(action => {
           const data = action.payload.doc.data() as any;

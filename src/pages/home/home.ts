@@ -25,6 +25,8 @@ export class HomePage {
   }
 
   ionViewDidLoad() {
+   //this.titleService.setTitle();
+   this.titleService.setTitle('');
    this.titleService.setTitle(`Granda Cassete - A maior plataforma de letras de musicas Africanas`);
   }
 
@@ -43,13 +45,11 @@ public replaceAll(input: string, find: string, replace: string): string {
 
   verItem(dado){
    this.navCtrl.setRoot("LetraPage",{
-     cantor: dado.cantor,
-     titulo: dado.titulo,
      letra: dado.letra,
      id: dado.id,
      visita: dado.visita,
-     cantorLink: this.replaceAll(dado.cantor, ' ', '-').toLowerCase(),
-     tituloLink: this.replaceAll(dado.titulo, ' ', '-').toLowerCase(),
+     cantor: this.replaceAll(dado.cantor, ' ', '-').toLowerCase(),
+     titulo: this.replaceAll(dado.titulo, ' ', '-').toLowerCase()
    });
   }
 

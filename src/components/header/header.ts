@@ -85,12 +85,15 @@ export class HeaderComponent {
     });   
      
   }
+// TypeScript function replace nome e titulo
+public replaceAll(input: string, find: string, replace: string): string {
+   return input.replace(new RegExp(find, 'g'), replace);
+}
 
   verItem(dado){
     this._navCtrl.setRoot("LetraPage",{
-      cantor: dado.cantor,
-      titulo: dado.titulo,
-      letra: dado.letra
+      cantor: this.replaceAll(dado.cantor, ' ', '-').toLowerCase(),
+      titulo: this.replaceAll(dado.titulo, ' ', '-').toLowerCase()
     });
   }
 

@@ -5,7 +5,7 @@ import { Title, Meta } from '@angular/platform-browser';
 
 @IonicPage({
   name: 'LetraPage',
-  segment: ':cantorLink/:tituloLink',
+ 
   defaultHistory: ['HomePage'],
   priority: 'high'
 })
@@ -83,10 +83,15 @@ export class LetraPage{
     const cantor = this.navParams.get('cantor');
     const titulo = this.navParams.get('titulo');
 
+
+
     this.letraService.getByTituloAndCantor(titulo,cantor).subscribe((data) => {
       this.dados = data;
+      console.log(data);
+      
+      if(data!=""){
       if(this.dados[0].traducao){
-        
+        this.titleService.setTitle('');
         this.titleService.setTitle(`${titulo} (tradução) - ${cantor} - grandacassete.com`);
         this.meta.addTag({ name: 'title', content: `${titulo} (tradução) - ${cantor} - grandacassete.com` });
 
@@ -98,6 +103,11 @@ export class LetraPage{
         this.meta.addTag({ name: 'title', content: `${titulo} - ${cantor} - grandacassete.com` });
         this.meta.updateTag({ name: 'keywords', content:`${titulo}, ${titulo} ${cantor}, ${titulo} letra,  ${cantor} letra, letras de músicas, letras `});
       }
+}
+     else{
+          this.navCtrl.setRoot("ErrorPage");
+
+}
     });
   }
 
